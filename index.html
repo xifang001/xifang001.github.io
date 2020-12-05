@@ -4,134 +4,251 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
-.w3-sidebar {
-  z-index: 3;
-  width: 250px;
-  top: 43px;
-  bottom: 0;
-  height: inherit;
-}
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
 </style>
 <body>
 
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-theme-l1">Home</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Researches</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Publications</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Projects</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Talks</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-white">News</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">Contact</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hide-medium w3-hover-white">CV</a>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Xi<br>Fang</b></h3>
   </div>
-</div>
-
-<!-- Sidebar -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
-    <i class="fa fa-remove"></i>
-  </a>
-  <h4 class="w3-bar-item"><b>Xi Fang</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="https://www.researchgate.net/profile/Xi_Fang11">ResearchGate</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="https://github.com/xifang001/">Github</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="xifang001.github.io">Website</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="#"></a>
+  <div class="w3-bar-block">
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#researches" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Researches</a> 
+    <a href="#publications" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Publications</a> 
+    <a href="#projects" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="#talks" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Talks</a> 
+    <a href="#news" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+    <a href="#cv" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">CV</a>
+  </div>
 </nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Xi Fang</span>
+</header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:250px">
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-  <div class="w3-row w3-padding-64">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal">Hello</h1>
-      <p>My name is Xi Fang and I am a PhD student at the biomedical engineering department of Rensselaer Polytechnic Institute. Before coming to RPI, I obtained Bachelor’s degree in Information Security from the School of Computing at Wuhan University. During my undergraduate period, I conducted two internships and got accessed to lots of cutting-edge technologies and state-of-the-art theories relevant to medical imaging and image processing. I am research assistant in Deep Imaging Analysitc Lab. My research focus is medical image processing, which includes feature recognition, detection and segmentation. I believe that my research will assist medical professionals and help to achieve more intelligent diagnosis and treatment in the future.</p>
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="projects">
+    <h1 class="w3-jumbo"><b>Projects</b></h1>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Showcase.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <img src="lobe_lesion.gif" style="width:100%" onclick="onClick(this)" alt="Concrete meets bricks">
+      <img src="lung_lobe2" style="width:100%" onclick="onClick(this)" alt="Light, white and tight scandinavian design">
+      <img src="lobe_lesion3.gif" style="width:100%" onclick="onClick(this)" alt="White walls with designer chairs">
     </div>
-    <div class="w3-third w3-container">
-      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+
+    <div class="w3-half">
+      <img src="/w3images/atrium.jpg" style="width:100%" onclick="onClick(this)" alt="Windows for the atrium">
+      <img src="/w3images/bedroom.jpg" style="width:100%" onclick="onClick(this)" alt="Bedroom and office in one space">
+      <img src="/w3images/livingroom2.jpg" style="width:100%" onclick="onClick(this)" alt="Scandinavian design">
+    </div>
+  </div>
+  
+    
+    <!-- Home -->
+  <div class="w3-container" id="home" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Hello.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>My name is Xi Fang and I am a PhD student at the biomedical engineering department of Rensselaer Polytechnic Institute. Before coming to RPI, I obtained Bachelor’s degree in Information Security from the School of Computing at Wuhan University. During my undergraduate period, I conducted two internships and got accessed to lots of cutting-edge technologies and state-of-the-art theories relevant to medical imaging and image processing. I am research assistant in Deep Imaging Analysitc Lab. My research focus is medical image processing, which includes feature recognition, detection and segmentation. I believe that my research will assist medical professionals and help to achieve more intelligent diagnosis and treatment in the future.
+    </p>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
     </div>
   </div>
 
-  <div class="w3-row">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal">News</h1>
-      <p>AAAA.</p>
+  <!-- Researches -->
+  <div class="w3-container" id="researches" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Researches.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Working on medical imaging.
+    </p>
+  </div>
+  
+    <!-- Publications -->
+  <div class="w3-container" id="publications" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Publications.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Xi Fang, Thomas Sanford, Baris Turkbey, Sheng Xu, Bradford J. Wood, and Pingkun Yan, "Association of AI Quantified COVID-19 Chest CTand Patient Outcome", International Journal of Computer Assisted Radiology and Surgery (2020)<p>
+    <p>Xi Fang, Uwe Kruger, Fatemeh Homayounieh, Hanqing Chao, Jiajin Zhang, Subba R. Digumarthy, Chiara D. Arru, Mannudeep K. Kalra, Pingkun Yan, "Division and Fusion: Rethink Convolutional Kernels for 3D Medical Image Segmentation", International Workshop on Machine Learning in Medical Imaging, pp. 160-169. Springer, Cham, 2020.<p>
+    <p>Hanqing Chao, Xi Fang, Jiajin Zhang, Fatemeh Homayounieh, Chiara D. Arrub, Subba R. Digumarthyb, Rosa Babaeic, Hadi K. Mobinc, Iman Mohsenic, Luca Sabad, Alessandro Carrieroe, Zeno Falaschie, Alessio Paschee, Ge Wanga, Mannudeep K. Kalrab, Pingkun Yan. "Integrative analysis for COVID-19 patient outcome prediction", Med Image Anal. 2020;67:101844. doi:10.1016/j.media.2020.101844
+    </p>
+    <p>Xi  Fang,  Pingkun  Yan,  “Multi-organ  Segmentation  over  Partially  LabeledDatasets with Multi-scale Feature Abstraction”, IEEE transaction on medicalimaging (Impact factor:  9.710), doi:  10.1109/TMI.2020.3001036
+    </p>
+    <p>Xi  Fang,  Sheng  Xu,  Bradford  J  Wood,  Pingkun  Yan,  “Deep  learning-basedliver segmentation for fusion-guided intervention”, International Journal of Computer Assisted Radiology and Surgery (2020).  https://doi.org/10.1007/s11548-020-02147-6
+    </p>
+    </p>Zhao  Peng, Xi  Fang,  Pingkun  Yan,  Hongming  Shan,  Tianyu  Liu,  Xi  Pei,Ge Wang, Bob Liu, Mannudeep K Kalra, X George Xu, “A method of rapidquantification of patient-specific organ doses for CT using deep-learning-basedmulti-organ segmentation and GPU-accelerated Monte Carlo dose computing”,Medical Physics (2020).  https://doi.org/10.1002/mp.14131</p>
+    <p>Xi Fang, Bo Du, Sheng Xu, Bradford J Wood, Pingkun Yan, “Unified Multi-scale Feature Abstraction for Medical Image Segmentation”, Medical Imaging2020:   Image  Processing.   Vol.   11313.   International  Society  for  Optics  andPhotonics, 2020.  (Oral)
+    </p>
+    <p>Zengmao Wang, Xi Fang, Xinyao Tang, Chen Wu, “Multi-Class Active Learn-ing  by  Integrating  Uncertainty  and  Diversity”,  IEEE  Access  6:  22794-22803</p>
+    
+    
+    
+  </div>
+  
+  <!-- Designers -->
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Designers.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>The best team in the world.</p>
+    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+    <p><b>Our designers are thoughtfully chosen</b>:</p>
+  </div>
+
+  <!-- The Team -->
+  <div class="w3-row-padding w3-grayscale">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+        <div class="w3-container">
+          <h3>John Doe</h3>
+          <p class="w3-opacity">CEO & Founder</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+        </div>
+      </div>
     </div>
-    <div class="w3-third w3-container">
-      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+        <div class="w3-container">
+          <h3>Jane Doe</h3>
+          <p class="w3-opacity">Designer</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
+        <div class="w3-container">
+          <h3>Mike Ross</h3>
+          <p class="w3-opacity">Architect</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="w3-row w3-padding-64">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal">Publications</h1>
-      <p>BBBB.</p>
-    </div>
-    <div class="w3-third w3-container">
-      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-    </div>
+  <!-- Packages / Pricing Tables -->
+  <div class="w3-container" id="packages" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Packages.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Some text our prices. Lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
   </div>
 
-  <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a class="w3-button w3-black" href="#">1</a>
-      <a class="w3-button w3-hover-black" href="#">2</a>
-      <a class="w3-button w3-hover-black" href="#">3</a>
-      <a class="w3-button w3-hover-black" href="#">4</a>
-      <a class="w3-button w3-hover-black" href="#">5</a>
-      <a class="w3-button w3-hover-black" href="#">»</a>
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+        <li class="w3-padding-16">Floorplanning</li>
+        <li class="w3-padding-16">10 hours support</li>
+        <li class="w3-padding-16">Photography</li>
+        <li class="w3-padding-16">20% furniture discount</li>
+        <li class="w3-padding-16">Good deals</li>
+        <li class="w3-padding-16">
+          <h2>$ 199</h2>
+          <span class="w3-opacity">per room</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+        </li>
+      </ul>
+    </div>
+        
+    <div class="w3-half">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-red w3-xlarge w3-padding-32">Pro</li>
+        <li class="w3-padding-16">Floorplanning</li>
+        <li class="w3-padding-16">50 hours support</li>
+        <li class="w3-padding-16">Photography</li>
+        <li class="w3-padding-16">50% furniture discount</li>
+        <li class="w3-padding-16">GREAT deals</li>
+        <li class="w3-padding-16">
+          <h2>$ 249</h2>
+          <span class="w3-opacity">per room</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-red w3-padding-large w3-hover-black">Sign Up</button>
+        </li>
+      </ul>
     </div>
   </div>
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
 
-  <footer id="myFooter">
-    <div class="w3-container w3-theme-l2 w3-padding-32">
-      <h4>Footer</h4>
-    </div>
-
-    <div class="w3-container w3-theme-l1">
-      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-    </div>
-  </footer>
-
-<!-- END MAIN -->
+<!-- End page content -->
 </div>
 
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
 <script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
+// Script to open and close sidebar
 function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-  }
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
 }
 
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
 }
 </script>
 
