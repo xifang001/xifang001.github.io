@@ -1,0 +1,295 @@
+  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="robots" content="index, follow" />
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="keywords" content="XiF ang, 方希, Remote Sensing, Image Processing, Deep Learning, Denoising, Cloud Removal, Hyperspecral, Wuhan University">
+<link rel="stylesheet" href="./Files/jemdoc.css" type="text/css" />
+<script src="jquery.min.js"></script>
+<link rel="shortcut icon" href="./Files/favicon.ico">
+<title>Xi Fang</title>
+</head>
+ 
+ 
+<body>
+
+<a id="home" class="anchor"></a>
+<div id="container"> 
+<div class="container"> 
+
+<table class="imgtable"><tr><td>
+<a href="./"><img src="./Files/zq_photo_square.jpg" alt="" height="215px" /></a>&nbsp;</td>
+<td align="left"><p><a href="./"><font size="4">Xi Fang (</font><font size="4"; font style="font-family:Microsoft YaHei">方 希</font><font size="4">)</font></a><br />
+<i>Ph.D Candidate </i>
+<br /><br />
+<a href="http://dial.rpi.edu/" target="_blank">Deep Imaging Analytics Lab (DIAL)</a><br />
+<a href="https://www.rpi.edu/" target="_blank">Rensselaer Polytechnic Institute</a><br />
+<br />
+Location: 4222, <br />
+<class="staffshortcut">
+ <A HREF="#News">News</A> | 
+ <A HREF="#Interest">Research Interest</A> | 
+ <A HREF="#Education">Education</A> | 
+ <A HREF="#Publications">Publications</A> | 
+ <A HREF="#Projects">Projects</A> | 
+ <A HREF="#Services">Services</A> | 
+ <A HREF="#Awards">Awards</A>
+<br />
+<br />
+ 
+Email: xifang96@gmail.com (prior); &nbsp;&nbsp;&nbsp;&nbsp; fangx2@rpi.edu <br />
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#researches" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Researches</a> 
+    <a href="#publications" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Publications</a> 
+    <a href="#projects" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Projects</a> 
+    <a href="#talks" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Talks</a> 
+    <a href="#news" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">News</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+    <a href="file/CV_2021.pdf" class="w3-bar-item w3-button w3-hover-white">CV</a>
+</td></tr></table>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  
+    
+    <!-- Home -->
+  <div class="w3-container" style="margin-top:80px" id="home" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Hawdy.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>My name is Xi Fang and I am a PhD student at the biomedical engineering department of Rensselaer Polytechnic Institute. Before coming to RPI, I obtained Bachelor’s degree in Information Security from the School of Computing at Wuhan University. During my undergraduate period, I conducted two internships and got accessed to lots of cutting-edge technologies and state-of-the-art theories relevant to medical imaging and image processing. I am research assistant in Deep Imaging Analysitc Lab. My research focus is medical image processing, which includes feature recognition, detection and segmentation. 
+    </p>
+  </div>
+
+  <!-- Projects -->
+  <div class="w3-container"  id="projects">
+    <!--<h1 class="w3-jumbo"><b>Projects</b></h1>-->
+    <h1 class="w3-xxxlarge w3-text-red"><b>Projects.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+      <img src="/pic/lobe_lesion.gif" style="width:100%" onclick="onClick(this)" alt="Lung lobe segmentation">
+  <!--     <img src="lung_lobe2.gif" style="width:100%" onclick="onClick(this)" alt="Lung lobe segmentation">
+      <img src="lobe_lesion3.gif" style="width:100%" onclick="onClick(this)" alt="Lung lobe segmentation">-->
+    </div>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Researches -->
+  <div class="w3-container" id="researches" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Researches.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>My main research interest lies in the intersection of deep learning and medical image analysis. On one hand, I develop new deep learning models to tackle different machine learning problems. On the other hand, using deep learning techniques, I try to tackle some potential problems in medical images.<p>
+    </p>
+    I also conducts research on various applications of deep learning. I believe that my research will assist medical professionals and help to achieve more intelligent diagnosis and treatment in the future.
+    </p>
+  </div>
+  
+    <!-- Publications -->
+  <div class="w3-container" id="publications" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Publications.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p style="text-indent: -1.6rem;margin-left: 0rem;">
+      <span>[1] <b>Xi Fang</b>, Uwe Kruger, Fatemeh Homayounieh, Hanqing Chao, Jiajin Zhang, Subba R. Digumarthy, Chiara D. Arru, Mannudeep K. Kalra, Pingkun Yan, 
+      "Association of AI Quantified COVID-19 Chest CTand Patient Outcome,"
+      <i>International Journal of Computer Assisted Radiology and Surgery (<b>IJCARS</b>)</i>, 
+      2021. 
+      [<a href= "https://doi.org/10.1007/s11548-020-02299-5" target="_blank">Link</a>] 
+      </span>
+      </p>
+      
+    <p style="text-indent: -1.6rem;margin-left: 0rem;">
+        <span>[2] Hanqing Chao*, <b>Xi Fang*</b>, Jiajin Zhang*, Fatemeh Homayounieh, Chiara D. Arrub, Subba R. Digumarthyb, Rosa Babaeic, Hadi K. Mobinc, Iman Mohsenic, Luca Sabad, Alessandro Carrieroe, Zeno Falaschie, Alessio Paschee, Ge Wanga, Mannudeep K. Kalrab, Pingkun Yan, 
+        "Integrative analysis for COVID-19 patient outcome prediction,"
+        <i>Medical Image Analysis (<b>MeDIA</b>)</i>, 
+        2021. 
+        [<a href= "https://doi.org/110.1016/j.media.2020.101844" target="_blank">Link</a>] 
+        </span>
+        </p>
+    
+    <p style="text-indent: -1.6rem;margin-left: 0rem;">
+        <span>[3] <b>Xi  Fang</b>,  Pingkun  Yan,  
+        “Multi-organ  Segmentation  over  Partially  Labeled Datasets with Multi-scale Feature Abstraction,”
+        <i>IEEE transaction on medical imaging (<b>TMI</b>)</i>, 
+        2020. 
+        [<a href= "https://doi.org/10.1109/TMI.2020.3001036" target="_blank">Link</a>] 
+        </span>
+        </p>
+    
+    <p style="text-indent: -1.6rem;margin-left: 0rem;">
+        <span>[4] <b>Xi  Fang</b>,  Sheng  Xu,  Bradford  J  Wood,  Pingkun  Yan,  
+        “Deep  learning-based liver segmentation for fusion-guided intervention,”
+        <i>International Journal of Computer Assisted Radiology and Surgery (<b>TMI</b>)</i>, 
+        2020. 
+        [<a href= "https://doi.org/10.1007/s11548-020-02147-6" target="_blank">Link</a>] 
+        </span>
+        </p>
+    <p>Xi Fang, Thomas Sanford, Baris Turkbey, Sheng Xu, Bradford J. Wood, and Pingkun Yan, "Division and Fusion: Rethink Convolutional Kernels for 3D Medical Image Segmentation", International Workshop on Machine Learning in Medical Imaging, pp. 160-169. Springer, Cham, 2020.</p>
+    </p>Zhao  Peng, Xi  Fang,  Pingkun  Yan,  Hongming  Shan,  Tianyu  Liu,  Xi  Pei,Ge Wang, Bob Liu, Mannudeep K Kalra, X George Xu, “A method of rapid quantification of patient-specific organ doses for CT using deep-learning-basedmulti-organ segmentation and GPU-accelerated Monte Carlo dose computing”,Medical Physics (2020).  https://doi.org/10.1002/mp.14131</p>
+    <p>Xi Fang, Bo Du, Sheng Xu, Bradford J Wood, Pingkun Yan, “Unified Multi-scale Feature Abstraction for Medical Image Segmentation”, Medical Imaging2020:   Image  Processing.   Vol.   11313.   International  Society  for  Optics  andPhotonics, 2020.  (Oral)</p>
+    <p>Zengmao Wang, Xi Fang, Xinyao Tang, Chen Wu, “Multi-Class Active Learning  by  Integrating  Uncertainty  and  Diversity”,  IEEE  Access  6:  22794-22803</p>
+    
+    
+    
+  </div>
+  
+  <!-- Designers -->
+  <div class="w3-container" id="news" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>News.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p><a href="https://spectrumlocalnews.com/nys/central-ny/politics/2020/12/04/rpi-develops-ai-algorithm-that-could-predict-covid-19-patient-outcomes-">ICU admission on COVID-19 is reported on local news.</a></p>
+    <p><a href="https://news.rpi.edu/content/2019/08/08/improved-imaging-technique-could-increase-chances-prostate-cancer-survival">Prostate cancer.</a></p>
+    <p><a href = "https://everydaymatters.rpi.edu/16353-2/#.XSD69i3MzyI">Prostate Tumors With Better Precision</a></p>
+  </div>
+
+  <!-- The Team 
+  <div class="w3-row-padding w3-grayscale">
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+        <div class="w3-container">
+          <h3>John Doe</h3>
+          <p class="w3-opacity">CEO & Founder</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+        <div class="w3-container">
+          <h3>Jane Doe</h3>
+          <p class="w3-opacity">Designer</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
+        <div class="w3-container">
+          <h3>Mike Ross</h3>
+          <p class="w3-opacity">Architect</p>
+          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- Packages / Pricing Tables -->
+  <div class="w3-container" id="talks" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Talks.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Graduate Symposium</p>
+    <p>MLMI 2020</p>
+    <p>SPIE Medical Imaging 2020</p>
+  </div>
+  <!--
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+        <li class="w3-padding-16">Floorplanning</li>
+        <li class="w3-padding-16">10 hours support</li>
+        <li class="w3-padding-16">Photography</li>
+        <li class="w3-padding-16">20% furniture discount</li>
+        <li class="w3-padding-16">Good deals</li>
+        <li class="w3-padding-16">
+          <h2>$ 199</h2>
+          <span class="w3-opacity">per room</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="w3-half">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-red w3-xlarge w3-padding-32">Pro</li>
+        <li class="w3-padding-16">Floorplanning</li>
+        <li class="w3-padding-16">50 hours support</li>
+        <li class="w3-padding-16">Photography</li>
+        <li class="w3-padding-16">50% furniture discount</li>
+        <li class="w3-padding-16">GREAT deals</li>
+        <li class="w3-padding-16">
+          <h2>$ 249</h2>
+          <span class="w3-opacity">per room</span>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+          <button class="w3-button w3-red w3-padding-large w3-hover-black">Sign Up</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  -->
+  
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Any questions is welcome!</p>
+    <form action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
+
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
