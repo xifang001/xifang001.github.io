@@ -1,0 +1,58 @@
+{{ define "main" }}
+  <section class="page-frame">
+    <div class="shell page-layout">
+      {{ partial "site-sidebar.html" . }}
+      <div class="page-main">
+        <section class="page-hero">
+          <div class="narrow">
+            <a class="back-link" href="{{ printf "%s/" .Section | relURL }}">← Back to {{ .Section | humanize }}</a>
+            <p class="eyebrow">{{ .Section | humanize }}</p>
+            <h1>{{ .Title }}</h1>
+            <div class="meta-stack">
+              <p>{{ .Date.Format "Jan 2, 2006" }}</p>
+              {{ with .Params.publication }}<p>{{ . }}</p>{{ end }}
+              {{ with .Params.authors }}<p>{{ delimit . ", " }}</p>{{ end }}
+            </div>
+            {{ if or .Params.url_pdf .Params.url_code .Params.url_project }}
+              <div class="inline-link-row">
+                {{ with .Params.url_pdf }}{{ if ne . "" }}<a href="{{ . }}">View PDF</a>{{ end }}{{ end }}
+                {{ with .Params.url_code }}{{ if ne . "" }}<a href="{{ . }}">Code</a>{{ end }}{{ end }}
+                {{ with .Params.url_project }}{{ if ne . "" }}<a href="{{ . }}">Project page</a>{{ end }}{{ end }}
+              </div>
+            {{ end }}
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="narrow prose-wrap">
+            {{ with .Params.summary }}
+              <div class="lead-card">
+                <p>{{ . }}</p>
+              </div>
+            {{ end }}
+
+            {{ if .Content }}
+              <div class="prose">{{ .Content }}</div>
+            {{ else if .Params.citation }}
+              <div class="prose">
+                <p><strong>Citation:</strong> {{ .Params.citation }}</p>
+              </div>
+            {{ else }}
+              <div class="prose">
+                <p>More details for this entry will be added soon.</p>
+              </div>
+            {{ end }}
+
+            {{ with .Params.tags }}
+              <ul class="tag-list">
+                {{ range . }}
+                  <li>{{ . }}</li>
+                {{ end }}
+              </ul>
+            {{ end }}
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{{ end }}

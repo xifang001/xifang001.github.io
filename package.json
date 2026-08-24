@@ -1,17 +1,18 @@
 {
-  "name": "hugo-blox-academic-cv-starter",
+  "name": "xi-fang-site",
   "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@10.14.0",
-  "description": "Academic CV starter template for Hugo Blox with Tailwind CSS v4",
+  "description": "Personal website for Xi Fang",
   "scripts": {
-    "dev": "hugo server --disableFastRender",
-    "build": "hugo --minify"
+    "dev": "HUGO_ENV=production hugo server --disableFastRender",
+    "build": "HUGO_ENV=production hugo --minify"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.12",
     "@tailwindcss/typography": "^0.5.10",
     "preact": "^10.27.2",
+    "preact-render-to-string": "^6.6.3",
     "tailwindcss": "^4.1.12"
   }
 }

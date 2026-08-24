@@ -1,0 +1,68 @@
+name: "Xi Fang"
+headline: "Building vision and multimodal AI systems for robotics and healthcare."
+subheadline: "Machine Learning and Research Engineer with a Ph.D. in Biomedical Engineering, focused on turning strong research into production-ready systems."
+location: "Bay Area, CA"
+email: "xifang96@gmail.com"
+phone: "(518) 960-2197"
+website: "https://xifang001.github.io/"
+cv_url: "/uploads/xi_fang_machine_learning_research_engineer.pdf"
+
+hero:
+  intro:
+    - "I work across medical imaging, computer vision, multimodal learning, and embodied AI."
+    - "Recent work spans production ML for medical robotics, 3D perception and simulation, and deployment pipelines that connect research models to real-world decision support."
+  metrics:
+    - label: "Published papers"
+      value: "20+"
+    - label: "Industry experience"
+      value: "3 years"
+    - label: "Core intersection"
+      value: "Robotics, CV, multimodal AI"
+
+summary:
+  title: "Profile"
+  text: "Machine Learning and Research Engineer with a Ph.D. in Biomedical Engineering and industry experience building production computer vision and multimodal ML systems for medical robotics. I enjoy translating strong research ideas into deployable systems, especially in settings that require geometric reasoning, multimodal sensing, or human-in-the-loop workflows."
+
+current:
+  title: "Currently"
+  items:
+    - "Machine Learning Engineer at Noah Medical, working on perception, registration, segmentation, and AI systems for medical robotics."
+    - "Interested in multimodal learning, embodied AI, computer vision, 3D perception, and clinically grounded deployment."
+    - "Writing and organizing work across projects, publications, and technical notes."
+
+focus_areas:
+  title: "What I Work On"
+  items:
+    - "Robotics and embodied AI, including VLA post-training, sim-to-real adaptation, and multimodal control."
+    - "Medical imaging and computer vision, including segmentation, registration, 3D reconstruction, and structured representation learning."
+    - "Surgical simulation and planning, especially methods that connect biomechanics, generative modeling, and clinical usability."
+
+skills:
+  title: "Core Strengths"
+  groups:
+    - name: "Robotics and Multimodal"
+      items:
+        - "Vision-Language-Action Models"
+        - "Embodied AI"
+        - "Sim-to-Real"
+        - "Multimodal Learning"
+        - "Post-training"
+    - name: "Computer Vision"
+      items:
+        - "Segmentation"
+        - "Registration"
+        - "3D Reconstruction"
+        - "Tracking"
+        - "Semantic Correspondence"
+    - name: "ML Systems"
+      items:
+        - "PyTorch"
+        - "Python"
+        - "TensorRT"
+        - "DeepSpeed"
+        - "Transformers"
+        - "C++ Integration"
+
+contact:
+  title: "Let's Connect"
+  text: "I am interested in roles and collaborations across robotics, multimodal AI, medical imaging, and research engineering."

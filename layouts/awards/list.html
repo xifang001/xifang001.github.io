@@ -1,0 +1,47 @@
+{{ define "main" }}
+  {{ $awards := site.Data.awards }}
+  <section class="page-frame">
+    <div class="shell page-layout">
+      {{ partial "site-sidebar.html" . }}
+      <div class="page-main">
+        <section class="page-hero">
+          <div class="narrow">
+            <p class="eyebrow">Awards & Honors</p>
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}<p class="lead">{{ . }}</p>{{ end }}
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="narrow">
+            <div class="awards-timeline">
+              {{ range $awards }}
+                {{ $award := . }}
+                <article class="award-item">
+                  <p class="award-year">{{ $award.year }}</p>
+                  <div class="award-copy">
+                    {{ with $award.links }}
+                      <p>
+                        {{ range $index, $link := . }}
+                          {{ if gt $index 0 }} and {{ end }}<a href="{{ $link.url }}">{{ $link.label }}</a>
+                        {{ end }}
+                      </p>
+                    {{ else }}
+                      <p>
+                        {{ with $award.url }}
+                          <a href="{{ . }}">{{ $award.title }}</a>
+                        {{ else }}
+                          {{ $award.title }}
+                        {{ end }}
+                      </p>
+                    {{ end }}
+                  </div>
+                </article>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{{ end }}

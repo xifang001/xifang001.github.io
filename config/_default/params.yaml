@@ -1,119 +1,67 @@
-# SITE SETUP
-# Guide: https://docs.hugoblox.com/tutorial/
-# Documentation: https://docs.hugoblox.com/
-# This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
+# ==============================================================================
+# HUGO BLOX CONFIGURATION — MINIMAL ACADEMIC STYLE
+# ==============================================================================
 
-# ==============================================================================
-# HUGO BLOX CONFIGURATION
-# ==============================================================================
 hugoblox:
-  # ────────────────────────────────────────────────────────────────────────────
-  # BRANDING
-  # Your site's identity - used in navbar, footer, SEO, and copyright
-  # ────────────────────────────────────────────────────────────────────────────
   branding:
-    # Display name shown in navbar and general site display
-    name: "Your Name"
-    # Optional: Browser tab title (defaults to name if not set)
-    # site_title: "Your Name | Research"
-    # Optional: Legal/copyright entity (defaults to name if not set)
-    # organization: "Your Full Legal Name"
+    name: "Xi Fang"
+    site_title: "Xi Fang | Medical Imaging and Surgical AI"
+    # organization: "Xi Fang"
 
-  # ────────────────────────────────────────────────────────────────────────────
-  # THEME
-  # Controls colors and appearance
-  # ────────────────────────────────────────────────────────────────────────────
   theme:
-    # Mode: 'light', 'dark', or 'system' (follows OS preference)
-    mode: system
-    # Theme pack: name from data/themes/ or { light: "x", dark: "y" } for mix-and-match
+    mode: light       # 极简学术主页推荐固定 light
     pack: "default"
-    # Optional: Override theme pack colors
     # colors:
-    #   primary: "indigo"    # Tailwind palette name or hex (e.g., "#6366f1")
-    #   secondary: "emerald"
-    #   neutral: "stone"     # Affects gray utilities (text-gray-*, bg-gray-*)
+    #   primary: "indigo"
+    #   neutral: "gray"
 
-  # ────────────────────────────────────────────────────────────────────────────
-  # TYPOGRAPHY
-  # Controls fonts and text sizing
-  # ────────────────────────────────────────────────────────────────────────────
   typography:
-    # Font: 'sans' (Inter), 'serif' (Roboto Slab), or 'native' (system fonts)
-    font: "sans"
-    # Size: 'sm', 'md', 'lg', or 'xl' (affects base font size and scale)
+    font: "sans"      # Inter — 现代、干净、学术风
     size: "md"
 
-  # ────────────────────────────────────────────────────────────────────────────
-  # LAYOUT
-  # Controls spacing and visual structure
-  # ────────────────────────────────────────────────────────────────────────────
   layout:
-    # Border radius: 'none', 'sm', 'md', 'lg', or 'full'
-    radius: "md"
-    # Spacing density: 'compact', 'comfortable', or 'spacious'
+    radius: "none"    # 去掉圆角，更接近 MIT/Stanford
     spacing: "comfortable"
 
 # ==============================================================================
-# SEO & MARKETING
+# SEO
 # ==============================================================================
 marketing:
   seo:
     site_type: Person
-    local_business_type: ''
-    description: 'The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website.'
-    twitter: 'BuildLore'
-    llm:
-      allow:
-        - /
-      disallow: []
-      note: 'Guidance for AI crawlers - customize to match your public content.'
-      contact: ''
-      policy_url: ''
-  analytics:
-    google_analytics: ''
-    baidu_tongji: ''
-    plausible: ''
-    fathom: ''
-    pirsch: ''
-  verification:
-    google: ''
-    baidu: ''
+    description: "Xi Fang is a machine learning and research engineer working across robotics, computer vision, multimodal AI, and medical imaging."
+
+  social:
+    email: "xifang96@gmail.com"
+    github: "https://github.com/xifang001"
+    google_scholar: "https://scholar.google.com/citations?user=gXBde2IAAAAJ"
+    linkedin: "https://www.linkedin.com/in/xi-fang-75734b153/"
+    orcid: ""
+
 
 # ==============================================================================
-# SITE HEADER
+# HEADER
 # ==============================================================================
 header:
   navbar:
     enable: true
     block: 'navbar'
     fixed_to_top: true
-    show_search: true
-    show_mode_toggle: true
-    show_theme_picker: true
+    show_search: false           # 极简风：去掉搜索
+    show_mode_toggle: false      # 去掉主题切换按钮
+    show_theme_picker: false
 
 # ==============================================================================
-# SITE FOOTER
+# FOOTER
 # ==============================================================================
 footer:
   copyright:
-    # Use {year} for current year, {name} for branding.organization, {license} for CC license link
-    notice: '© {year} {name}. This work is licensed under {license}'
+    notice: "© {year} {name}"
     license:
-      enable: true
-      allow_derivatives: false
-      share_alike: true
-      allow_commercial: false
+      enable: false
 
 # ==============================================================================
-# LOCALIZATION
-# ==============================================================================
-locale:
-  date_format: 'Jan 2, 2006'
-  time_format: '3:04 PM'
-
-# ==============================================================================
-# SITE FEATURES
+# FEATURES
 # ==============================================================================
 features:
   math:

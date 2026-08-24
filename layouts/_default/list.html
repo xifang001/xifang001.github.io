@@ -1,0 +1,86 @@
+{{ define "main" }}
+  {{ $pageCount := len .Pages }}
+  {{ $featuredCount := 0 }}
+  {{ if eq .Section "publications" }}
+    {{ $featuredCount = len (where .Pages ".Params.featured" true) }}
+  {{ end }}
+  <section class="page-frame">
+    <div class="shell page-layout">
+      {{ partial "site-sidebar.html" . }}
+      <div class="page-main">
+        <section class="page-hero">
+          <div class="narrow">
+            <p class="eyebrow">{{ .Section | humanize }}</p>
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}<p class="lead">{{ . }}</p>{{ else }}{{ with .Content }}<div class="lead">{{ . }}</div>{{ end }}{{ end }}
+            <p class="collection-meta">{{ $pageCount }} entries{{ if eq .Section "publications" }} / {{ $featuredCount }} featured{{ end }}</p>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="narrow">
+            {{ if eq .Section "publications" }}
+              <div class="entry-list">
+                {{ range (sort .Pages "Date" "desc") }}
+                  <article class="text-entry publication-entry">
+                    <p class="card-kicker">{{ .Date.Format "Jan 2006" }}{{ with .Params.publication }} · {{ . }}{{ end }}</p>
+                    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                    {{ with .Params.authors }}
+                      <p class="meta-line">{{ delimit . ", " }}</p>
+                    {{ end }}
+                    {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+                    <div class="inline-link-row">
+                      <a href="{{ .RelPermalink }}">Read details</a>
+                      {{ with .Params.url_pdf }}{{ if ne . "" }}<a href="{{ . }}">PDF</a>{{ end }}{{ end }}
+                      {{ with .Params.url_code }}{{ if ne . "" }}<a href="{{ . }}">Code</a>{{ end }}{{ end }}
+                    </div>
+                  </article>
+                {{ end }}
+              </div>
+      {{ else if eq .Section "blog" }}
+        {{ if gt (len .Pages) 0 }}
+          <div class="entry-list">
+            {{ range (sort .Pages "Date" "desc") }}
+              <article class="text-entry">
+                <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <p>{{ .Summary }}</p>
+                <div class="inline-link-row">
+                  <a href="{{ .RelPermalink }}">Read details</a>
+                </div>
+              </article>
+            {{ end }}
+          </div>
+              {{ else }}
+                <div class="empty-state">
+                  <h2>Posts are coming soon.</h2>
+                  <p>This section is ready for notes on robotics, ML systems, computer vision, and research in practice.</p>
+                </div>
+              {{ end }}
+            {{ else }}
+              <div class="entry-list">
+                {{ range (sort .Pages "Date" "desc") }}
+                  <article class="text-entry">
+                    <p class="card-kicker">{{ .Date.Format "2006" }}</p>
+                    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                    {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
+                    {{ with .Params.tags }}
+                      <ul class="tag-list">
+                        {{ range first 4 . }}
+                          <li>{{ . }}</li>
+                        {{ end }}
+                      </ul>
+                    {{ end }}
+                    <div class="inline-link-row">
+                      <a href="{{ .RelPermalink }}">Open project</a>
+                    </div>
+                  </article>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{{ end }}

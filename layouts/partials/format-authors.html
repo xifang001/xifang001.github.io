@@ -1,0 +1,19 @@
+{{- if .Params.authors_display -}}
+  {{- .Params.authors_display -}}
+{{- else -}}
+  {{- $formatted := slice -}}
+  {{- range .Params.authors -}}
+    {{- $author := . -}}
+    {{- if eq $author "others" -}}
+      {{- $formatted = $formatted | append "et al." -}}
+    {{- else if in $author "," -}}
+      {{- $parts := split $author "," -}}
+      {{- $last := strings.TrimSpace (index $parts 0) -}}
+      {{- $first := strings.TrimSpace (delimit (after 1 $parts) " ") -}}
+      {{- $formatted = $formatted | append (printf "%s %s" $first $last) -}}
+    {{- else -}}
+      {{- $formatted = $formatted | append $author -}}
+    {{- end -}}
+  {{- end -}}
+  {{- delimit $formatted ", " -}}
+{{- end -}}

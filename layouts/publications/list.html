@@ -1,0 +1,47 @@
+{{ define "main" }}
+  {{ $selectedPublications := sort (where .Pages ".Params.featured" true) "Date" "desc" }}
+  {{ $selectedCount := len $selectedPublications }}
+  <section class="page-frame">
+    <div class="shell page-layout">
+      {{ partial "site-sidebar.html" . }}
+      <div class="page-main">
+        <section class="page-hero">
+          <div class="narrow">
+            <p class="eyebrow">Publications</p>
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}<p class="lead">{{ . }}</p>{{ end }}
+            <div class="publication-note">
+              <p>For a more complete publication list, please see <a href="{{ site.Params.marketing.social.google_scholar }}">Google Scholar</a>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="narrow">
+            <div class="entry-list">
+              {{ range $selectedPublications }}
+                <article class="text-entry publication-entry">
+                  <p class="card-kicker">{{ .Date.Format "Jan 2006" }}{{ with .Params.publication }} · {{ . }}{{ end }}</p>
+                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                  {{ with partial "format-authors.html" . }}
+                    <p class="meta-line">{{ . }}</p>
+                  {{ end }}
+                  {{ with .Params.highlights }}
+                    <p class="publication-highlights">{{ delimit . " · " }}</p>
+                  {{ end }}
+                  {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+                  <div class="inline-link-row">
+                    <a href="{{ .RelPermalink }}">Read details</a>
+                    {{ with .Params.url_pdf }}{{ if ne . "" }}<a href="{{ . }}">PDF</a>{{ end }}{{ end }}
+                    {{ with .Params.url_code }}{{ if ne . "" }}<a href="{{ . }}">Code</a>{{ end }}{{ end }}
+                    {{ with .Params.url_project }}{{ if ne . "" }}<a href="{{ . }}">Project page</a>{{ end }}{{ end }}
+                  </div>
+                </article>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{{ end }}

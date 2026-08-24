@@ -1,0 +1,87 @@
+{{ $current := . }}
+{{ $profile := site.Data.profile }}
+<aside class="page-sidebar home-sidebar">
+  <div class="profile-strip profile-strip-sidebar">
+    <img class="profile-avatar profile-avatar-large" src="{{ `media/avatar.jpg` | relURL }}" alt="Portrait of {{ $profile.name }}">
+    <div class="profile-copy">
+      <p class="sidebar-title">{{ $profile.name }}</p>
+      <p class="profile-role">I build vision and multimodal AI systems for robotics and medical imaging.</p>
+    </div>
+  </div>
+  <div class="sidebar-stack">
+    <div class="profile-contact profile-contact-compact">
+      <span class="contact-chip">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21s6-4.35 6-10a6 6 0 1 0-12 0c0 5.65 6 10 6 10Z"></path>
+            <circle cx="12" cy="11" r="2.5"></circle>
+          </svg>
+        </span>
+        <span>{{ $profile.location }}</span>
+      </span>
+      <a class="contact-chip" href="mailto:{{ $profile.email }}">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m4 7 8 6 8-6"></path>
+          </svg>
+        </span>
+        <span>gmail</span>
+      </a>
+      <a class="contact-chip" href="{{ site.Params.marketing.social.github }}">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.41-4.04-1.41-.55-1.38-1.33-1.74-1.33-1.74-1.09-.74.08-.72.08-.72 1.2.09 1.84 1.22 1.84 1.22 1.08 1.82 2.82 1.29 3.5.99.11-.77.42-1.29.76-1.59-2.67-.3-5.47-1.31-5.47-5.86 0-1.29.47-2.34 1.22-3.16-.12-.3-.53-1.53.12-3.18 0 0 1-.32 3.3 1.21a11.6 11.6 0 0 1 6.01 0c2.29-1.53 3.29-1.21 3.29-1.21.66 1.65.25 2.88.12 3.18.76.82 1.22 1.87 1.22 3.16 0 4.56-2.81 5.56-5.49 5.85.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"></path>
+          </svg>
+        </span>
+        <span>GitHub</span>
+      </a>
+      <a class="contact-chip" href="{{ site.Params.marketing.social.linkedin }}">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.55A1.96 1.96 0 0 0 5.24 3 1.97 1.97 0 0 0 3.3 4.95c0 1.07.87 1.94 1.94 1.94h.02a1.95 1.95 0 0 0 1.9-1.94ZM20.7 13.08c0-3.48-1.86-5.1-4.35-5.1-2 0-2.9 1.1-3.4 1.88V8.5H9.58c.04.9 0 11.5 0 11.5h3.37v-6.42c0-.34.03-.68.13-.92.28-.68.91-1.38 1.98-1.38 1.4 0 1.96 1.04 1.96 2.57V20h3.38v-6.92Z"></path>
+          </svg>
+        </span>
+        <span>LinkedIn</span>
+      </a>
+      <a class="contact-chip" href="{{ site.Params.marketing.social.google_scholar }}">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3Zm-7.73 8.65V16L12 21l7.73-5v-4.35L12 16l-7.73-4.35Z"></path>
+          </svg>
+        </span>
+        <span>Scholar</span>
+      </a>
+      <a class="contact-chip" href="{{ $profile.cv_url | relURL }}">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"></path>
+            <path d="M14 3v5h5"></path>
+            <path d="M9 13h6"></path>
+            <path d="M9 17h6"></path>
+            <path d="M9 9h1"></path>
+          </svg>
+        </span>
+        <span>CV</span>
+      </a>
+    </div>
+    <nav class="sidebar-block" aria-label="Primary">
+      <div class="sidebar-nav">
+        {{ range site.Menus.main }}
+          {{ $isActive := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) (eq $current.RelPermalink .URL) }}
+          {{ $label := .Name }}
+          {{ if eq .Name "Awards" }}{{ $label = "Awards & Honors" }}{{ end }}
+          <a class="sidebar-nav-link{{ if $isActive }} is-active{{ end }}" href="{{ .URL }}">{{ $label }}</a>
+        {{ end }}
+      </div>
+    </nav>
+    <div class="sidebar-block visitor-map-block" aria-label="Visitor map">
+      <p class="sidebar-eyebrow">Visitor Map</p>
+      <div class="visitor-map-shell">
+        <a href="https://mapmyvisitors.com/web/1c7o1" title="Visit tracker" target="_blank" rel="noreferrer">
+          <img src="https://mapmyvisitors.com/map.png?d=UwRWUlH9HpjuGKBFbP-mYILFTFtfCPUSTaqWW9V4-LA&amp;cl=ffffff" alt="Visitor map">
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>

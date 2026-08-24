@@ -1,0 +1,751 @@
+:root {
+  --bg: #eef2f5;
+  --surface: #f8fafc;
+  --surface-soft: #f3f6f8;
+  --text: #1b1f1d;
+  --muted: #64717a;
+  --line: #d6dde3;
+  --line-strong: #c0cad2;
+  --accent: #0f5a61;
+  --accent-soft: #e6eef2;
+  --shell: 960px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.72;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.shell {
+  width: min(calc(100% - 2rem), var(--shell));
+  margin: 0 auto;
+}
+
+.narrow {
+  width: min(calc(100% - 2rem), 820px);
+}
+
+.home-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: 3.25rem;
+  align-items: start;
+}
+
+.page-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: 3.25rem;
+  align-items: start;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(248, 247, 242, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(203, 196, 182, 0.42);
+}
+
+.nav-shell,
+.footer-shell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-shell {
+  padding: 1rem 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1.12;
+}
+
+.brand-text strong {
+  font-size: 1rem;
+}
+
+.brand-text span,
+.muted,
+.meta-line,
+.site-footer p:last-child,
+.card-kicker {
+  color: var(--muted);
+}
+
+.site-nav {
+  display: grid;
+  gap: 0.45rem;
+  margin-left: 3.1rem;
+  justify-items: start;
+}
+
+.nav-link {
+  color: rgba(102, 112, 107, 0.76);
+  font-size: 0.91rem;
+}
+
+.nav-link.is-active,
+.nav-link:hover {
+  color: var(--text);
+}
+
+.home-intro,
+.page-hero {
+  padding: 2.75rem 0 0.9rem;
+}
+
+.section-block {
+  padding: 1.1rem 0 2.4rem;
+}
+
+.home-stack,
+.prose-wrap,
+.contact-flow {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.home-main {
+  min-width: 0;
+  max-width: 50rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.section-block-home:first-child {
+  padding-top: 0;
+}
+
+.section-block-home {
+  padding: 0 0 1.7rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-block-home:first-child {
+  padding-top: 0;
+}
+
+.section-block-home:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.home-sidebar {
+  position: sticky;
+  top: 7rem;
+  display: grid;
+  gap: 1.4rem;
+  align-content: start;
+}
+
+.page-sidebar {
+  padding-top: 2.4rem;
+}
+
+.page-main {
+  min-width: 0;
+  padding-top: 2.4rem;
+}
+
+.page-frame .page-hero {
+  padding-top: 0;
+}
+
+.sidebar-brand {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(221, 216, 205, 0.72);
+}
+
+.sidebar-title {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.profile-strip {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.profile-strip-sidebar {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.profile-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 16px;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.profile-avatar-large {
+  width: 140px;
+  height: 140px;
+  border-radius: 22px;
+}
+
+.profile-copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(1.46rem, 2.25vw, 2rem);
+}
+
+h2 {
+  font-size: clamp(1.45rem, 2.35vw, 1.95rem);
+}
+
+h3 {
+  font-size: 1.22rem;
+}
+
+p,
+li {
+  font-size: 1rem;
+}
+
+.profile-role,
+.lead {
+  margin: 0;
+  max-width: 42rem;
+  font-size: 0.93rem;
+  color: #36403c;
+}
+
+.profile-meta,
+.profile-links,
+.collection-meta {
+  margin: 0;
+  color: var(--muted);
+}
+
+.profile-contact,
+.profile-links,
+.inline-link-row,
+.tag-list,
+.meta-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.profile-contact {
+  gap: 0.15rem 0.5rem;
+  margin-top: 0.1rem;
+  color: var(--muted);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-contact-vertical {
+  display: grid;
+  gap: 0.55rem;
+  align-items: start;
+}
+
+.profile-contact-vertical .contact-separator {
+  display: none;
+}
+
+.profile-contact-compact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.sidebar-nav-link {
+  color: rgba(102, 112, 107, 0.82);
+  font-size: 0.95rem;
+}
+
+.sidebar-nav-link.is-active,
+.sidebar-nav-link:hover,
+.sidebar-nav-link:focus-visible {
+  color: var(--text);
+}
+
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  min-height: auto;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  color: #36403c;
+  font-size: 0.89rem;
+  line-height: 1;
+}
+
+.contact-chip:hover {
+  color: var(--accent);
+}
+
+.contact-separator {
+  color: rgba(102, 112, 107, 0.65);
+}
+
+.contact-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 0.82rem;
+  height: 0.82rem;
+  background: transparent;
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+
+.contact-icon svg {
+  width: 0.74rem;
+  height: 0.74rem;
+}
+
+.awards-timeline {
+  display: grid;
+  gap: 1.15rem;
+  margin-top: 2rem;
+}
+
+.award-item {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(221, 216, 205, 0.72);
+}
+
+.award-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.award-year {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.award-copy p {
+  margin: 0;
+}
+
+.intro-copy p,
+.prose p,
+.lead-card p,
+.home-note {
+  margin: 0;
+  max-width: 42rem;
+}
+
+.intro-copy {
+  gap: 1rem;
+}
+
+.intro-lead {
+  font-size: 1.16rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.focus-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.6rem;
+  color: #36403c;
+}
+
+.focus-list li {
+  padding-left: 0.1rem;
+}
+
+.focus-label {
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.sidebar-stack {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.sidebar-block {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.visitor-map-block {
+  padding-top: 0.25rem;
+}
+
+.visitor-map-shell {
+  min-height: 138px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.45);
+  overflow: hidden;
+}
+
+.visitor-map-shell img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.compact-list .text-entry {
+  padding: 0.7rem 0;
+}
+
+.directory-block {
+  padding-top: 0.4rem;
+}
+
+.directory-list,
+.entry-list,
+.related-list {
+  display: grid;
+  gap: 0;
+}
+
+.directory-item,
+.text-entry,
+.related-item {
+  display: block;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.directory-item strong {
+  display: block;
+  margin-bottom: 0.18rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 1.24rem;
+}
+
+.directory-item span,
+.text-entry p,
+.related-item p,
+.prose,
+.meta-stack,
+.home-note {
+  color: #36403c;
+}
+
+.text-entry:first-child,
+.related-item:first-child {
+  padding-top: 0.2rem;
+  border-top: 0;
+}
+
+.text-entry h2,
+.text-entry h3,
+.publication-entry h2,
+.publication-entry h3 {
+  margin-bottom: 0.32rem;
+}
+
+.text-entry p {
+  margin: 0.2rem 0 0;
+  max-width: 45rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.7rem;
+}
+
+.section-link,
+.back-link,
+.inline-link-row a,
+.profile-links a,
+.directory-item:hover strong,
+.text-entry h2 a:hover,
+.text-entry h3 a:hover {
+  color: var(--accent);
+}
+
+.collection-meta,
+.meta-stack {
+  margin-top: 0.9rem;
+}
+
+.publication-note {
+  margin-top: 0.9rem;
+  color: var(--muted);
+}
+
+.publication-note p {
+  margin: 0;
+}
+
+.page-hero .publication-note {
+  max-width: 42rem;
+}
+
+.publication-entry h3 {
+  font-size: 0.98rem;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.publication-entry .card-kicker {
+  font-weight: 600;
+  color: #4c5953;
+}
+
+.publication-highlights {
+  margin: 0.18rem 0 0;
+  color: var(--accent);
+  font-size: 0.92rem;
+}
+
+.inline-link-row {
+  margin-top: 0.55rem;
+  gap: 1rem;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.7rem 0 0;
+  gap: 0.55rem;
+}
+
+.tag-list li {
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+}
+
+.empty-state,
+.lead-card,
+.prose,
+.related-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.empty-state,
+.lead-card,
+.prose {
+  padding: 1.1rem 1.2rem;
+}
+
+.prose {
+  line-height: 1.8;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.prose h2,
+.prose h3 {
+  margin: 1.6rem 0 0.7rem;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.3rem;
+}
+
+.meta-stack {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+}
+
+.related-block {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.related-item {
+  padding: 1rem 1.1rem;
+}
+
+.site-footer {
+  padding: 1rem 0 2.8rem;
+}
+
+.footer-shell {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+@media (max-width: 760px) {
+  .nav-shell,
+  .footer-shell,
+  .section-heading,
+  .profile-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav {
+    gap: 0.45rem;
+    margin-left: 0;
+  }
+
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .home-sidebar {
+    position: static;
+  }
+
+  .page-sidebar,
+  .page-main {
+    padding-top: 0;
+  }
+
+  .profile-strip-sidebar {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .profile-avatar-large {
+    width: 96px;
+    height: 96px;
+    border-radius: 18px;
+  }
+
+  .profile-contact-vertical {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.5rem;
+  }
+
+  .profile-contact-vertical .contact-separator {
+    display: inline;
+  }
+
+  .sidebar-nav {
+    gap: 0.4rem;
+  }
+
+  .award-item {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .home-intro,
+  .page-hero {
+    padding-top: 2.4rem;
+  }
+
+  .profile-avatar {
+    width: 84px;
+    height: 84px;
+  }
+}

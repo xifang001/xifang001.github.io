@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default `en` }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+    {{ $metaDescription := .Description | default .Params.description | default site.Params.marketing.seo.description }}
+    {{ with $metaDescription }}<meta name="description" content="{{ . }}">{{ end }}
+    <link rel="stylesheet" href="{{ `css/site.css` | relURL }}">
+    {{ hugo.Generator }}
+  </head>
+  <body class="page-{{ .Kind }} section-{{ .Section | default `home` }}">
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+  </body>
+</html>

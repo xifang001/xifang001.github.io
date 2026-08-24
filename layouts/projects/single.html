@@ -1,0 +1,61 @@
+{{ define "main" }}
+  <section class="page-frame">
+    <div class="shell page-layout">
+      {{ partial "site-sidebar.html" . }}
+      <div class="page-main">
+        <section class="page-hero">
+          <div class="narrow">
+            <a class="back-link" href="{{ `projects/` | relURL }}">← Back to Projects</a>
+            <p class="eyebrow">Project</p>
+            <h1>{{ .Title }}</h1>
+            <div class="meta-stack">
+              <p>{{ .Date.Format "Jan 2, 2006" }}</p>
+              {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="narrow prose-wrap">
+            {{ with .Params.summary }}
+              <div class="lead-card">
+                <p>{{ . }}</p>
+              </div>
+            {{ end }}
+
+            {{ if .Content }}
+              <div class="prose">{{ .Content }}</div>
+            {{ end }}
+
+            {{ with .Params.links }}
+              <div class="related-block">
+                <p class="eyebrow">Related Work</p>
+                <div class="related-list">
+                  {{ range . }}
+                    {{ if eq .type "site" }}
+                      {{ with site.GetPage .url }}
+                        <article class="related-item">
+                          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                          {{ with .Params.publication }}<p class="meta-line">{{ . }}</p>{{ end }}
+                          {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+                        </article>
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                </div>
+              </div>
+            {{ end }}
+
+            {{ with .Params.tags }}
+              <ul class="tag-list">
+                {{ range . }}
+                  <li>{{ . }}</li>
+                {{ end }}
+              </ul>
+            {{ end }}
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{{ end }}

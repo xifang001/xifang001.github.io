@@ -1,0 +1,41 @@
+{{ define "main" }}
+  {{ $pageCount := len .Pages }}
+  <section class="page-frame">
+    <div class="shell page-layout">
+      {{ partial "site-sidebar.html" . }}
+      <div class="page-main">
+        <section class="page-hero">
+          <div class="narrow">
+            <p class="eyebrow">Projects</p>
+            <h1>{{ .Title }}</h1>
+            {{ with .Params.description }}<p class="lead">{{ . }}</p>{{ end }}
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="narrow">
+            <div class="entry-list">
+              {{ range (sort .Pages "Date" "desc") }}
+                <article class="text-entry">
+                  <p class="card-kicker">{{ .Date.Format "2006" }}</p>
+                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                  {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
+                  {{ with .Params.tags }}
+                    <ul class="tag-list">
+                      {{ range first 4 . }}
+                        <li>{{ . }}</li>
+                      {{ end }}
+                    </ul>
+                  {{ end }}
+                  <div class="inline-link-row">
+                    <a href="{{ .RelPermalink }}">Read details</a>
+                  </div>
+                </article>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{{ end }}

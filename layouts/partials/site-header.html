@@ -1,0 +1,17 @@
+{{ $current := . }}
+<header class="site-header">
+  <div class="shell nav-shell">
+    <a class="brand" href="{{ "/" | relURL }}">
+      <span class="brand-mark">XF</span>
+      <span class="brand-text">
+        <strong>{{ .Site.Data.profile.name }}, Ph.D.</strong>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      {{ range site.Menus.main }}
+        {{ $isActive := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) (eq $current.RelPermalink .URL) }}
+        <a class="nav-link{{ if $isActive }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>
