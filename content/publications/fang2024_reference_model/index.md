@@ -14,6 +14,8 @@ publication_types: ["2"]
 publication: "International Journal of Computer Assisted Radiology and Surgery"
 citation: "X. Fang, H. H. Deng, T. Kuang, X. Xu, J. Lee, J. Gateno, and P. Yan, “Patient-specific reference model estimation for orthognathic surgical planning,” *IJCARS*, vol. 19, no. 7, pp. 1439–1447, 2024."
 summary: "A patient-specific reference model framework for orthognathic surgical planning that improves anatomical correspondence and supports more reliable downstream simulation."
+conference_publication: "International Conference on Information Processing in Computer-Assisted Interventions"
+include_in_conference: true
 highlights:
   - "IPCAI oral, Nvidia Bench-to-Bedside RunnerUp Award"
 featured: true

@@ -1,4 +1,8 @@
 {{ define "main" }}
+  {{ $allPosts := sort .RegularPages "Date" "desc" }}
+  {{ $learning := where $allPosts ".Params.categories" "intersect" (slice "Learning") }}
+  {{ $reflections := where $allPosts ".Params.categories" "intersect" (slice "Reflections") }}
+  {{ $life := where $allPosts ".Params.categories" "intersect" (slice "Life") }}
   <section class="page-frame">
     <div class="shell page-layout">
       {{ partial "site-sidebar.html" . }}
@@ -7,26 +11,25 @@
           <div class="narrow">
             <p class="eyebrow">Blog</p>
             <h1>{{ .Title }}</h1>
-            {{ with .Params.description }}<p class="lead">{{ . }}</p>{{ end }}
           </div>
         </section>
 
         <section class="section-block section-block-blog-top">
           <div class="narrow">
             <nav class="blog-category-bar" aria-label="Blog categories">
-              <a class="blog-category-link" href="{{ `blog/learning/` | relURL }}">Learning</a>
-              <a class="blog-category-link" href="{{ `blog/reflections/` | relURL }}">Reflections</a>
-              <a class="blog-category-link" href="{{ `blog/life/` | relURL }}">Life</a>
+              <a class="blog-category-link" href="#learning">Learning</a>
+              <a class="blog-category-link" href="#reflections">Reflections</a>
+              <a class="blog-category-link" href="#life">Life</a>
             </nav>
           </div>
         </section>
 
-        <section class="section-block">
+        <section class="section-block project-group-block" id="learning">
           <div class="narrow">
-            {{ $posts := where .RegularPages "Section" "blog" }}
-            {{ if gt (len $posts) 0 }}
+            <div class="section-heading"><div><h2>Learning</h2></div></div>
+            {{ if gt (len $learning) 0 }}
               <div class="entry-list">
-                {{ range (sort $posts "Date" "desc") }}
+                {{ range $learning }}
                   <article class="text-entry blog-entry">
                     <div class="blog-entry-meta-row">
                       <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
@@ -34,17 +37,58 @@
                     </div>
                     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                     {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
-                    <div class="inline-link-row">
-                      <a href="{{ .RelPermalink }}">Read article</a>
-                    </div>
+                    <div class="inline-link-row"><a href="{{ .RelPermalink }}">Read article</a></div>
                   </article>
                 {{ end }}
               </div>
             {{ else }}
-              <div class="empty-state">
-                <h2>Posts are coming soon.</h2>
-                <p>This section is ready for writing across learning, reflections, and life.</p>
+              <p class="section-empty-note">Posts in this category will be added here.</p>
+            {{ end }}
+          </div>
+        </section>
+
+        <section class="section-block project-group-block" id="reflections">
+          <div class="narrow">
+            <div class="section-heading"><div><h2>Reflections</h2></div></div>
+            {{ if gt (len $reflections) 0 }}
+              <div class="entry-list">
+                {{ range $reflections }}
+                  <article class="text-entry blog-entry">
+                    <div class="blog-entry-meta-row">
+                      <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
+                    </div>
+                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
+                    <div class="inline-link-row"><a href="{{ .RelPermalink }}">Read article</a></div>
+                  </article>
+                {{ end }}
               </div>
+            {{ else }}
+              <p class="section-empty-note">Posts in this category will be added here.</p>
+            {{ end }}
+          </div>
+        </section>
+
+        <section class="section-block project-group-block" id="life">
+          <div class="narrow">
+            <div class="section-heading"><div><h2>Life</h2></div></div>
+            {{ if gt (len $life) 0 }}
+              <div class="entry-list">
+                {{ range $life }}
+                  <article class="text-entry blog-entry">
+                    <div class="blog-entry-meta-row">
+                      <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
+                    </div>
+                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
+                    <div class="inline-link-row"><a href="{{ .RelPermalink }}">Read article</a></div>
+                  </article>
+                {{ end }}
+              </div>
+            {{ else }}
+              <p class="section-empty-note">Posts in this category will be added here.</p>
             {{ end }}
           </div>
         </section>

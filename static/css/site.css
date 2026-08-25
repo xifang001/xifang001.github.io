@@ -706,6 +706,12 @@ li {
 .project-group-block + .project-group-block {
   padding-top: 0;
 }
+
+.section-empty-note {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
 .blog-category-bar {
   display: flex;
   flex-wrap: wrap;

@@ -1,5 +1,11 @@
 {{ define "main" }}
-  {{ $selectedPublications := sort (where .Pages ".Params.featured" true) "Date" "desc" }}
+  {{ $featured := sort (where .Pages ".Params.featured" true) "Date" "desc" }}
+  {{ $journalCore := where $featured ".Params.publication_types" "intersect" (slice "2") }}
+  {{ $journalExtras := where .Pages ".Params.include_in_journal" true }}
+  {{ $journals := sort (union $journalCore $journalExtras) "Date" "desc" }}
+  {{ $conferenceCore := where $featured ".Params.publication_types" "intersect" (slice "1") }}
+  {{ $conferenceExtras := where $featured ".Params.include_in_conference" true }}
+  {{ $conferences := sort (union $conferenceCore $conferenceExtras) "Date" "desc" }}
   <section class="page-frame">
     <div class="shell page-layout">
       {{ partial "site-sidebar.html" . }}
@@ -14,22 +20,54 @@
           </div>
         </section>
 
-        <section class="section-block">
+        <section class="section-block section-block-blog-top">
           <div class="narrow">
+            <nav class="blog-category-bar" aria-label="Publication categories">
+              <a class="blog-category-link" href="#journal">Journal</a>
+              <a class="blog-category-link" href="#conference">Conference</a>
+            </nav>
+          </div>
+        </section>
+
+        <section class="section-block project-group-block" id="journal">
+          <div class="narrow">
+            <div class="section-heading"><div><h2>Journal</h2></div></div>
             <div class="entry-list">
-              {{ range $selectedPublications }}
+              {{ range $journals }}
                 <article class="text-entry publication-entry">
                   <div class="publication-meta-row">
                     <p class="card-kicker">{{ .Date.Format "Jan 2006" }}</p>
                     {{ with .Params.publication }}<p class="publication-venue">{{ . }}</p>{{ end }}
                   </div>
                   <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                  {{ with partial "format-authors.html" . }}
-                    <p class="meta-line">{{ . }}</p>
-                  {{ end }}
-                  {{ with .Params.highlights }}
-                    <p class="publication-highlights">{{ delimit . " · " }}</p>
-                  {{ end }}
+                  {{ with partial "format-authors.html" . }}<p class="meta-line">{{ . }}</p>{{ end }}
+                  {{ with .Params.highlights }}<p class="publication-highlights">{{ delimit . " · " }}</p>{{ end }}
+                  {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+                  <div class="inline-link-row">
+                    <a href="{{ .RelPermalink }}">Read details</a>
+                    {{ with .Params.url_pdf }}{{ if ne . "" }}<a href="{{ . }}">PDF</a>{{ end }}{{ end }}
+                    {{ with .Params.url_code }}{{ if ne . "" }}<a href="{{ . }}">Code</a>{{ end }}{{ end }}
+                    {{ with .Params.url_project }}{{ if ne . "" }}<a href="{{ . }}">Project page</a>{{ end }}{{ end }}
+                  </div>
+                </article>
+              {{ end }}
+            </div>
+          </div>
+        </section>
+
+        <section class="section-block project-group-block" id="conference">
+          <div class="narrow">
+            <div class="section-heading"><div><h2>Conference</h2></div></div>
+            <div class="entry-list">
+              {{ range $conferences }}
+                <article class="text-entry publication-entry">
+                  <div class="publication-meta-row">
+                    <p class="card-kicker">{{ .Date.Format "Jan 2006" }}</p>
+                    {{ with or .Params.conference_publication .Params.publication }}<p class="publication-venue">{{ . }}</p>{{ end }}
+                  </div>
+                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                  {{ with partial "format-authors.html" . }}<p class="meta-line">{{ . }}</p>{{ end }}
+                  {{ with .Params.highlights }}<p class="publication-highlights">{{ delimit . " · " }}</p>{{ end }}
                   {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
                   <div class="inline-link-row">
                     <a href="{{ .RelPermalink }}">Read details</a>
