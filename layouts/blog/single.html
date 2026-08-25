@@ -1,0 +1,49 @@
+{{ define "main" }}
+  <section class="page-frame page-frame-single article-frame">
+    <div class="shell shell-single article-shell">
+      <div class="page-main page-main-single article-main">
+        <section class="page-hero article-hero page-hero-single">
+          <div class="article-narrow narrow-single">
+            <p class="article-author article-author-top">Xi Fang</p>
+            <p class="article-date">{{ .Date.Format "Jan 2, 2006" }}</p>
+            <h1 class="article-title">{{ .Title }}</h1>
+            {{ with .Params.summary }}
+              <p class="article-standfirst">{{ . }}</p>
+            {{ end }}
+          </div>
+        </section>
+
+        <section class="section-block article-section section-block-single">
+          <div class="article-narrow narrow-single">
+            <article class="article-prose">
+              {{ .Content }}
+            </article>
+            {{ with .Params.tags }}
+              <ul class="tag-list article-tags">
+                {{ range . }}
+                  <li>{{ . }}</li>
+                {{ end }}
+              </ul>
+            {{ end }}
+
+            <section class="article-comments" aria-label="Comments">
+              <div class="article-comments-head">
+                <h2>Comments</h2>
+              </div>
+              <script src="https://utteranc.es/client.js"
+                repo="xifang001/xifang001.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async>
+              </script>
+              <noscript>
+                <p><a href="mailto:xifang96@gmail.com">Email me</a> if you would like to share thoughts on this post.</p>
+              </noscript>
+            </section>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{{ end }}

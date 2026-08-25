@@ -15,7 +15,7 @@
           <div class="narrow">
             <div class="entry-list">
               {{ range (sort .Pages "Date" "desc") }}
-                <article class="text-entry">
+                <article class="text-entry news-entry">
                   <p class="card-kicker">{{ .Date.Format "Jan 2006" }}</p>
                   <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                   {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}

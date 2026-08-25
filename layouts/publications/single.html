@@ -1,10 +1,9 @@
 {{ define "main" }}
-  <section class="page-frame">
-    <div class="shell page-layout">
-      {{ partial "site-sidebar.html" . }}
-      <div class="page-main">
-        <section class="page-hero">
-          <div class="narrow">
+  <section class="page-frame page-frame-single">
+    <div class="shell shell-single">
+      <div class="page-main page-main-single">
+        <section class="page-hero page-hero-single">
+          <div class="narrow narrow-single">
             <a class="back-link" href="{{ `publications/` | relURL }}">← Back to Publications</a>
             <p class="eyebrow">Publication</p>
             <h1>{{ .Title }}</h1>
@@ -28,8 +27,8 @@
           </div>
         </section>
 
-        <section class="section-block">
-          <div class="narrow prose-wrap">
+        <section class="section-block section-block-single">
+          <div class="narrow prose-wrap narrow-single">
             {{ with .Params.summary }}
               <div class="lead-card">
                 <p>{{ . }}</p>

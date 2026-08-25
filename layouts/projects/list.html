@@ -1,5 +1,4 @@
 {{ define "main" }}
-  {{ $pageCount := len .Pages }}
   <section class="page-frame">
     <div class="shell page-layout">
       {{ partial "site-sidebar.html" . }}
@@ -16,17 +15,10 @@
           <div class="narrow">
             <div class="entry-list">
               {{ range (sort .Pages "Date" "desc") }}
-                <article class="text-entry">
+                <article class="text-entry project-entry">
                   <p class="card-kicker">{{ .Date.Format "2006" }}</p>
                   <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                   {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
-                  {{ with .Params.tags }}
-                    <ul class="tag-list">
-                      {{ range first 4 . }}
-                        <li>{{ . }}</li>
-                      {{ end }}
-                    </ul>
-                  {{ end }}
                   <div class="inline-link-row">
                     <a href="{{ .RelPermalink }}">Read details</a>
                   </div>
