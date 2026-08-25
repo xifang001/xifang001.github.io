@@ -1,6 +1,7 @@
 ---
 title: COVID-19 patient outcome prediction
 date: 2020-12-01
+project_group: Research
 summary: Multimodal patient outcome prediction combining CT imaging and non-imaging clinical signals for COVID-19 risk assessment.
 tags:
   - Multimodal Learning

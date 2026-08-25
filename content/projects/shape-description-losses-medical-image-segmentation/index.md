@@ -1,6 +1,7 @@
 ---
 title: Shape description losses for medical image segmentation
 date: 2021-04-01
+project_group: Research
 summary: Shape-aware objectives that inject global geometric and statistical structure into medical image segmentation training.
 tags:
   - Segmentation

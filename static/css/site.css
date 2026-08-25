@@ -698,6 +698,14 @@ li {
   padding-bottom: 1.2rem;
 }
 
+
+.project-group-block {
+  padding-top: 0.2rem;
+}
+
+.project-group-block + .project-group-block {
+  padding-top: 0;
+}
 .blog-category-bar {
   display: flex;
   flex-wrap: wrap;

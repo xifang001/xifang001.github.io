@@ -1,6 +1,7 @@
 ---
 title: Foundation AI model for medical image analysis
 date: 2023-06-01
+project_group: Independent
 summary: Efficient 3D transformer development and self-supervised pretraining for transferable medical image foundation models.
 tags:
   - Foundation Models

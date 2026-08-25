@@ -1,6 +1,7 @@
 ---
 title: Facial simulation following bony movement for orthognathic surgical planning
 date: 2022-02-01
+project_group: Research
 summary: Deep learning-based facial appearance simulation that estimates soft-tissue change from planned craniomaxillofacial bony movement.
 tags:
   - Facial Simulation

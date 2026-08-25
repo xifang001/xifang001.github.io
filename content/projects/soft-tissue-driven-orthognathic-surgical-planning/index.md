@@ -1,6 +1,7 @@
 ---
 title: Soft-tissue driven orthognathic surgical planning
 date: 2023-03-01
+project_group: Research
 summary: A planning framework that predicts facial soft-tissue response and reduces iterative guesswork in orthognathic surgical planning.
 tags:
   - Surgical Planning

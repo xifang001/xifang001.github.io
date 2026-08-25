@@ -1,6 +1,7 @@
 ---
 title: Pneumonia detection on chest X-rays with deep learning
 date: 2018-06-01
+project_group: Research
 summary: Undergraduate dissertation project at Wuhan University on multi-label thoracic pathology recognition from chest X-rays using residual-assisted DenseNet models.
 tags:
   - Chest X-ray

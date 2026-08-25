@@ -1,6 +1,7 @@
 ---
 title: Liver segmentation in CT images using Deep CNN for fusion guided intervention
 date: 2019-05-01
+project_group: Research
 summary: Deep learning-based liver segmentation and multimodal fusion workflows for image-guided intervention.
 tags:
   - Liver Segmentation

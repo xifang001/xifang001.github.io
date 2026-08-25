@@ -1,6 +1,7 @@
 ---
 title: Saliency-aware image captioning at Tsinghua University
 date: 2018-02-01
+project_group: Research
 summary: Research internship on image captioning with saliency-guided attention at the State Key Laboratory of Intelligent Technology and Systems, Tsinghua University.
 tags:
   - Image Captioning

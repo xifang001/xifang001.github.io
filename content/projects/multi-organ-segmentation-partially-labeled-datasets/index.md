@@ -1,6 +1,7 @@
 ---
 title: Multi-organ segmentation over partially labeled datasets
 date: 2020-04-01
+project_group: Research
 summary: A unified multi-scale segmentation framework for learning across multiple partially labeled datasets with a single model.
 tags:
   - Multi-Organ Segmentation

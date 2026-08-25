@@ -1,6 +1,7 @@
 ---
 title: CT nodule detection at Infervision
 date: 2017-05-01
+project_group: Research
 summary: Deep learning internship on lung nodule detection with clinical collaborators at Tongji Hospital, Wuhan.
 tags:
   - Nodule Detection

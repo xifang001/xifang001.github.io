@@ -1,6 +1,7 @@
 ---
 title: Unsupervised reference CMF model prediction for orthognathic surgical planning
 date: 2023-10-01
+project_group: Research
 summary: Patient-specific reference model prediction for orthognathic surgical planning using self-supervised learning and deep query-based retrieval.
 tags:
   - Orthognathic Surgical Planning

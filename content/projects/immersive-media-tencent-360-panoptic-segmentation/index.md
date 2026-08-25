@@ -1,6 +1,7 @@
 ---
 title: 360 image panoptic segmentation for immersive media
 date: 2022-05-01
+project_group: Research
 summary: Research internship at Tencent America on unsupervised domain adaptation for 360 image panoptic segmentation in 3D virtual tour workflows.
 tags:
   - Panoptic Segmentation
