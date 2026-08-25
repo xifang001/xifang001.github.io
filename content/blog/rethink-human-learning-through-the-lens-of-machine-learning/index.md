@@ -24,7 +24,7 @@ After a recent group activity in the Fuyao Program, I found myself thinking abou
 
 Machine learning has long borrowed ideas from human intelligence. But perhaps the loop can also run in reverse: after decades of building learning systems, we now have a more systematic language for thinking about learning itself.
 
-Instead of only asking how to make machines learn more like humans, I am interested in another question: **can the way we train and optimize machine learning systems help us become better human learners?**
+Instead of only asking how to make machines learn more like humans, I am interested in another question: can the way we train and optimize machine learning systems help us become better human learners?
 
 ## Why This Question Matters
 
@@ -42,7 +42,7 @@ Our learning rate also seems to change over time. When we are young, beliefs and
 
 That is why continued learning may require deliberately placing ourselves in settings where our current assumptions are no longer sufficient. Growth often begins when an existing internal model stops explaining the world well enough.
 
-There is also a human analogue to **catastrophic forgetting**. A model that is updated too aggressively on new data can lose capabilities it once had. People can experience something similar when short-term pressure, narrow specialization, or constant context switching erodes older skills, perspectives, or habits of thought that were once valuable. Continuing to learn is not only about updating quickly, but also about retaining what should not be lost.
+There is also a human analogue to catastrophic forgetting. A model that is updated too aggressively on new data can lose capabilities it once had. People can experience something similar when short-term pressure, narrow specialization, or constant context switching erodes older skills, perspectives, or habits of thought that were once valuable. Continuing to learn is not only about updating quickly, but also about retaining what should not be lost.
 
 ## Training Data, Curriculum, and Generalization
 

@@ -479,6 +479,16 @@ li {
   overflow: hidden;
 }
 
+.visitor-map-frame {
+  display: block;
+}
+
+.visitor-map-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .visitor-map-link {
   display: inline-block;
   padding: 0.9rem 1rem;
@@ -580,22 +590,36 @@ li {
 }
 
 .publication-entry h3 {
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   font-weight: 500;
   line-height: 1.45;
   letter-spacing: 0;
 }
 
+.publication-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
 .publication-entry .card-kicker {
-  font-weight: 600;
   color: #4c5953;
+}
+
+.publication-venue {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .publication-highlights {
   margin: 0.18rem 0 0;
   color: var(--accent);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 .inline-link-row {
@@ -778,10 +802,10 @@ li {
 
 .article-title {
   margin: 0;
-  max-width: 42rem;
-  font-size: clamp(2rem, 3.1vw, 2.85rem);
-  line-height: 1.08;
-  letter-spacing: -0.028em;
+  max-width: 40rem;
+  font-size: clamp(1.78rem, 2.65vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.024em;
   text-wrap: balance;
 }
 
@@ -869,7 +893,7 @@ li {
 
 @media (max-width: 760px) {
   .article-title {
-    font-size: 1.85rem;
+    font-size: 1.65rem;
   }
 
   .article-standfirst,

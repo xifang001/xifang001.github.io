@@ -1,6 +1,5 @@
 {{ define "main" }}
   {{ $selectedPublications := sort (where .Pages ".Params.featured" true) "Date" "desc" }}
-  {{ $selectedCount := len $selectedPublications }}
   <section class="page-frame">
     <div class="shell page-layout">
       {{ partial "site-sidebar.html" . }}
@@ -9,7 +8,6 @@
           <div class="narrow">
             <p class="eyebrow">Publications</p>
             <h1>{{ .Title }}</h1>
-            {{ with .Params.description }}<p class="lead">{{ . }}</p>{{ end }}
             <div class="publication-note">
               <p>For a more complete publication list, please see <a href="{{ site.Params.marketing.social.google_scholar }}">Google Scholar</a>.</p>
             </div>
@@ -21,7 +19,10 @@
             <div class="entry-list">
               {{ range $selectedPublications }}
                 <article class="text-entry publication-entry">
-                  <p class="card-kicker">{{ .Date.Format "Jan 2006" }}{{ with .Params.publication }} · {{ . }}{{ end }}</p>
+                  <div class="publication-meta-row">
+                    <p class="card-kicker">{{ .Date.Format "Jan 2006" }}</p>
+                    {{ with .Params.publication }}<p class="publication-venue">{{ . }}</p>{{ end }}
+                  </div>
                   <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                   {{ with partial "format-authors.html" . }}
                     <p class="meta-line">{{ . }}</p>
