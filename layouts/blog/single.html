@@ -4,9 +4,16 @@
       <div class="page-main page-main-single article-main">
         <section class="page-hero article-hero page-hero-single">
           <div class="article-narrow narrow-single">
+            <a class="article-back-link" href="/blog/">← Back to Blog</a>
             <p class="article-author article-author-top">Xi Fang</p>
             <p class="article-date">{{ .Date.Format "Jan 2, 2006" }}</p>
             <h1 class="article-title">{{ .Title }}</h1>
+            {{ with .Params.part_label }}
+              <p class="article-part-label">{{ . }}</p>
+            {{ end }}
+            {{ with .Params.part_summary }}
+              <p class="article-part-summary">{{ . }}</p>
+            {{ end }}
             {{ with .Params.summary }}
               <p class="article-standfirst">{{ . }}</p>
             {{ end }}

@@ -33,9 +33,15 @@
                   <article class="text-entry blog-entry">
                     <div class="blog-entry-meta-row">
                       <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with .Params.part_label }}<p class="blog-entry-series">{{ . }}</p>{{ end }}
                       {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
                     </div>
                     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    {{ if or .Params.part_label .Params.part_summary }}
+                      <p class="blog-entry-part-note">
+                        {{ with .Params.part_label }}{{ . }}{{ end }}{{ if and .Params.part_label .Params.part_summary }} · {{ end }}{{ with .Params.part_summary }}{{ . }}{{ end }}
+                      </p>
+                    {{ end }}
                     {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
                     <div class="inline-link-row"><a href="{{ .RelPermalink }}">Read article</a></div>
                   </article>
@@ -56,9 +62,15 @@
                   <article class="text-entry blog-entry">
                     <div class="blog-entry-meta-row">
                       <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with .Params.part_label }}<p class="blog-entry-series">{{ . }}</p>{{ end }}
                       {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
                     </div>
                     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    {{ if or .Params.part_label .Params.part_summary }}
+                      <p class="blog-entry-part-note">
+                        {{ with .Params.part_label }}{{ . }}{{ end }}{{ if and .Params.part_label .Params.part_summary }} · {{ end }}{{ with .Params.part_summary }}{{ . }}{{ end }}
+                      </p>
+                    {{ end }}
                     {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
                     <div class="inline-link-row"><a href="{{ .RelPermalink }}">Read article</a></div>
                   </article>
@@ -79,9 +91,15 @@
                   <article class="text-entry blog-entry">
                     <div class="blog-entry-meta-row">
                       <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with .Params.part_label }}<p class="blog-entry-series">{{ . }}</p>{{ end }}
                       {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
                     </div>
                     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    {{ if or .Params.part_label .Params.part_summary }}
+                      <p class="blog-entry-part-note">
+                        {{ with .Params.part_label }}{{ . }}{{ end }}{{ if and .Params.part_label .Params.part_summary }} · {{ end }}{{ with .Params.part_summary }}{{ . }}{{ end }}
+                      </p>
+                    {{ end }}
                     {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
                     <div class="inline-link-row"><a href="{{ .RelPermalink }}">Read article</a></div>
                   </article>

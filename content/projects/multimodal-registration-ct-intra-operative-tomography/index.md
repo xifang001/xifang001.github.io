@@ -1,5 +1,5 @@
 ---
-title: Multi-modal registration between pre-operative CT and intra-operative tomography
+title: Multi-modal registration between pre-operative CT and intra-operative tomography for real-time lesion localization
 date: 2026-06-01
 project_group: Industry
 summary: Developed and integrated a multimodal registration system between pre-operative CT and intra-operative tomography, improving real-time lesion visibility for image-guided biopsy.

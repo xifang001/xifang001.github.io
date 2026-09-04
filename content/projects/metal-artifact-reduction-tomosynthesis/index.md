@@ -1,5 +1,5 @@
 ---
-title: Metal artifact reduction for tomosynthesis
+title: Metal artifact reduction for enhanced tomosynthesis
 date: 2024-10-01
 project_group: Industry
 summary: Built an AI-assisted annotation and refinement pipeline for fluoroscopy data, then trained and deployed an nnU-Net system for metal artifact reduction across multiple C-arm platforms.

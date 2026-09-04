@@ -26,7 +26,7 @@ Machine learning has long borrowed ideas from human intelligence. But perhaps th
 
 Instead of only asking how to make machines learn more like humans, I am interested in another question: can the way we train and optimize machine learning systems help us become better human learners?
 
-## Why This Question Matters
+## How I Started Thinking About It
 
 Many of the core ideas in machine learning were originally inspired by human cognition and behavior: neural networks, reinforcement learning, attention, memory, and agents. Over time, these ideas evolved into practical tools for improving learning systems in a disciplined way.
 
@@ -64,7 +64,7 @@ A similar tension appears in exploration versus exploitation. Relying only on wh
 
 Knowledge distillation offers another useful analogy. We do not need to learn everything from scratch. Teachers, mentors, books, colleagues, and now AI systems can all act as teacher models. The most valuable thing to learn from them is often not just the answer, but the process: how they frame a problem, where they focus attention, and how they respond when uncertainty appears.
 
-## What This Means for Human Learning
+## What I Take Away From This
 
 Taken together, these ideas suggest that better learning may be less about raw effort and more about better design. We can choose stronger training data, build better curricula, learn from better teacher models, revisit our reward functions, create room for both depth and exploration, and be more deliberate about retaining what matters as we adapt.
 
