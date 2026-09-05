@@ -10,10 +10,14 @@ tags:
   - Topic One
 categories:
   - Life
+series:
+  - Life Notes
 authors:
   - Xi Fang
 toc: false
 draft: true
+part_label: ""
+part_summary: ""
 ---
 
 Open with the moment, event, or experience that prompted the post.
@@ -34,6 +38,6 @@ Keep it concrete and readable.
 
 Add the next part without trying to cover too much at once.
 
-## Takeaways
+## Closing Notes
 
 Close with what stayed with you, changed your thinking, or felt worth remembering.

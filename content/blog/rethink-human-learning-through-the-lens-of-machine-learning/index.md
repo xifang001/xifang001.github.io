@@ -11,7 +11,7 @@ tags:
   - Reinforcement Learning
   - Learning Systems
 categories:
-  - Reflections
+  - Research Notes
 series:
   - Research Reflections
 authors:

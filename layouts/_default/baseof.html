@@ -7,6 +7,20 @@
     {{ $metaDescription := .Description | default .Params.description | default site.Params.marketing.seo.description }}
     {{ with $metaDescription }}<meta name="description" content="{{ . }}">{{ end }}
     <link rel="stylesheet" href="{{ `css/site.css` | relURL }}">
+    {{ if .Params.math }}
+      <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]'], ['$$', '$$']]
+          },
+          options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+          }
+        };
+      </script>
+      <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    {{ end }}
     {{ hugo.Generator }}
   </head>
   <body class="page-{{ .Kind }} section-{{ .Section | default `home` }}">

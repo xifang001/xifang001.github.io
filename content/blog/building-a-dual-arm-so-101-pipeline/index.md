@@ -12,7 +12,7 @@ tags:
   - Teleoperation
   - Data Collection
 categories:
-  - Learning
+  - Robotics
 series:
   - Robotics Notes
 authors:
@@ -69,7 +69,7 @@ Once the calibration state was clean, both the single-arm and dual-arm teleopera
 
 The photo below shows one of the calibration checks I used, with the servos aligned around their middle positions before validating the joint ranges.
 
-<figure class="article-figure-small">
+<figure class="article-figure-calibration">
   <img src="calibration-photo.jpg" alt="SO-101 arm during calibration, with the servos aligned around their middle positions.">
   <figcaption>Figure 3. Calibration check with the servos aligned around their middle positions.</figcaption>
 </figure>
@@ -90,7 +90,7 @@ The short teleoperation clip below shows the main goal of this stage: making the
 
 <figure class="article-figure-tele">
   <img src="teleop-demo.gif" alt="Animated teleoperation clip showing the follower arm moving with the leader arm.">
-  <figcaption>Figure 7. A short teleoperation clip showing the follower arm moving with the leader arm.</figcaption>
+  <figcaption>Figure 4. A short teleoperation clip showing the follower arm moving with the leader arm.</figcaption>
 </figure>
 
 To support teleoperation and recording, I installed one camera for the left arm, one camera for the right arm, and one third-view camera for the overall scene.
@@ -98,15 +98,15 @@ To support teleoperation and recording, I installed one camera for the left arm,
 <div class="article-media-grid article-media-grid--three">
   <figure>
     <img src="left-arm-camera.jpg" alt="Left-arm camera setup.">
-    <figcaption>Figure 4. Left-arm camera setup.</figcaption>
+    <figcaption>Figure 5. Left-arm camera setup.</figcaption>
   </figure>
   <figure>
     <img src="right-arm-camera.jpg" alt="Right-arm camera setup.">
-    <figcaption>Figure 5. Right-arm camera setup.</figcaption>
+    <figcaption>Figure 6. Right-arm camera setup.</figcaption>
   </figure>
   <figure>
     <img src="third-view-camera.jpg" alt="Third-view camera setup.">
-    <figcaption>Figure 6. Third-view camera setup.</figcaption>
+    <figcaption>Figure 7. Third-view camera setup.</figcaption>
   </figure>
 </div>
 
@@ -322,12 +322,29 @@ For replay and spot checking, I used:
   --dataset.episode=0</code></pre>
 </details>
 
-<figure class="article-figure-small">
-  <video controls playsinline preload="metadata" poster="replay-poster.jpg">
-    <source src="replay-preview-trimmed.mp4" type="video/mp4">
-  </video>
-  <figcaption>Figure 11. A short replay clip from the recorded dataset and inspection workflow.</figcaption>
+I then repeated the same collection and inspection workflow with a second task: covering a cylinder with a blue cap. Compared with the carrot-to-box task, this setup requires more precise alignment between the cap and the cylinder before placement. The example below shows the recorded camera and joint traces alongside a replay of one collected episode.
+
+<figure class="article-figure-wide">
+  <img src="cover-task-data-collection.jpg" alt="Rerun data-collection view for the cylinder-covering task, showing camera streams together with observation and action traces.">
+  <figcaption>Figure 11. Data inspection for the cylinder-covering task, including camera views, observations, and action traces.</figcaption>
 </figure>
+
+The two replay clips below provide a direct comparison between the collected carrot-to-box and cylinder-covering episodes.
+
+<div class="article-media-grid article-media-grid--data-pair">
+  <figure>
+    <video controls playsinline preload="metadata" poster="replay-poster.jpg">
+      <source src="replay-preview-trimmed.mp4" type="video/mp4">
+    </video>
+    <figcaption>Figure 12. Replay of a carrot-to-box episode from the recorded dataset.</figcaption>
+  </figure>
+  <figure>
+    <video controls playsinline preload="metadata" poster="cover-task-replay-poster.jpg">
+      <source src="cover-task-replay.mp4" type="video/mp4">
+    </video>
+    <figcaption>Figure 13. Replay of an episode in which the robot covers the cylinder with the blue cap.</figcaption>
+  </figure>
+</div>
 
 ## What I Learned
 

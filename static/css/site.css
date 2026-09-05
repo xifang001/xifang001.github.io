@@ -991,6 +991,19 @@ li {
   justify-content: center;
 }
 
+.article-media-grid--data-pair {
+  grid-template-columns: repeat(2, minmax(0, 340px));
+  justify-content: center;
+  align-items: start;
+}
+
+.article-prose .article-media-grid--data-pair video {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  background: #111;
+}
+
 .article-media-grid--tele {
   grid-template-columns: minmax(0, 420px) minmax(0, 780px);
   justify-content: center;
@@ -1056,6 +1069,10 @@ li {
 .article-figure-small img,
 .article-figure-small video {
   width: min(100%, 260px);
+}
+
+.article-prose .article-figure-calibration img {
+  width: min(100%, 190px);
 }
 
 .article-figure-tele img,
@@ -1144,6 +1161,7 @@ li {
   }
 
   .article-media-grid--compact-two,
+  .article-media-grid--data-pair,
   .article-media-grid--tele {
     grid-template-columns: 1fr;
   }

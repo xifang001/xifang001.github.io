@@ -1,4 +1,155 @@
 {{ define "main" }}
+  <style>
+    .article-frame {
+      padding: 2.15rem 0 3rem;
+    }
+
+    .article-shell {
+      width: min(calc(100% - 2rem), 72rem);
+      margin: 0 auto;
+    }
+
+    .article-main {
+      width: 100%;
+    }
+
+    .article-narrow {
+      width: min(calc(100% - 2rem), 48rem);
+      margin-inline: auto;
+    }
+
+    .article-back-link {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 0 0.95rem;
+      color: var(--muted, #64717a);
+      font-size: 0.92rem;
+      text-decoration: none;
+    }
+
+    .article-date {
+      margin: 0 0 0.55rem;
+      color: var(--muted, #64717a);
+      font-size: 0.93rem;
+    }
+
+    .article-title {
+      margin: 0;
+      max-width: 40rem;
+      font-size: clamp(1.78rem, 2.65vw, 2.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.024em;
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      color: var(--text, #1b1f1d);
+    }
+
+    .article-part-label {
+      margin: 0.85rem 0 0.2rem;
+      color: var(--accent, #0f5a61);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .article-part-summary {
+      margin: 0 0 0.75rem;
+      color: #44514b;
+      font-size: 1.03rem;
+      line-height: 1.48;
+      font-weight: 500;
+    }
+
+    .article-standfirst {
+      margin: 0.8rem 0 0;
+      max-width: 40rem;
+      color: #4b5752;
+      font-size: 1rem;
+      line-height: 1.62;
+    }
+
+    .article-author {
+      margin: 0;
+      color: var(--text, #1b1f1d);
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+
+    .article-author-top {
+      margin-bottom: 0.2rem;
+    }
+
+    .article-prose {
+      color: #232b28;
+      font-size: 1rem;
+      line-height: 1.74;
+    }
+
+    .article-prose p {
+      margin: 0 0 0.82rem;
+    }
+
+    .article-prose h2,
+    .article-prose h3 {
+      margin: 2.2rem 0 0.75rem;
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      color: var(--text, #1b1f1d);
+      line-height: 1.18;
+    }
+
+    .article-prose h2 {
+      font-size: 1.5rem;
+    }
+
+    .article-prose h3 {
+      font-size: 1.18rem;
+    }
+
+    .article-prose figure {
+      margin: 1rem auto 1.4rem;
+      text-align: center;
+    }
+
+    .article-prose figure img,
+    .article-prose figure video {
+      display: block;
+      width: min(100%, 620px);
+      margin-inline: auto;
+      border-radius: 18px;
+      max-width: 100%;
+    }
+
+    .article-prose figcaption {
+      margin-top: 0.55rem;
+      color: var(--muted, #64717a);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .article-tags {
+      margin-top: 1.6rem;
+    }
+
+    .article-comments {
+      margin-top: 1.6rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line, #d6dde3);
+    }
+
+    @media (max-width: 760px) {
+      .article-narrow {
+        width: min(calc(100% - 1.5rem), 48rem);
+      }
+
+      .article-title {
+        font-size: 1.65rem;
+      }
+
+      .article-prose {
+        font-size: 0.97rem;
+      }
+    }
+  </style>
   <section class="page-frame page-frame-single article-frame">
     <div class="shell shell-single article-shell">
       <div class="page-main page-main-single article-main">
