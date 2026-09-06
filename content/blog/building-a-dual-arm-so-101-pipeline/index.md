@@ -19,6 +19,7 @@ authors:
   - Xi Fang
 toc: false
 draft: false
+math: true
 part_label: "Part I"
 part_summary: "Hardware bring-up, teleoperation, and data collection"
 ---
@@ -62,6 +63,16 @@ lerobot-setup-motors \
 ## Calibration
 
 I first calibrated one leader arm and one follower arm and verified that single-pair teleoperation worked correctly. After that, I installed the second pair and repeated the process for dual-arm teleoperation.
+
+Each SO-101 motor is a rotary servo, but the raw encoder value is not yet a meaningful joint coordinate. I calibrated the leader and follower separately because corresponding motors can differ in zero offset, direction, and usable range. Conceptually, the two calibration mappings convert raw readings \(s_L\) and \(s_F\) into aligned joint states:
+
+\[
+q_L=C_L(s_L),
+\qquad
+q_F=C_F(s_F).
+\]
+
+During teleoperation, the calibrated leader state is mapped to a follower target \(q_F^{*}\). When joint order, direction, and range are aligned, this mapping is effectively one-to-one. This relationship also defines the joint-space imitation data: the follower's measured state \(q_F\) is part of the observation, while the leader-derived target \(q_F^{*}\) is recorded as the action.
 
 The main issue I ran into was calibration inconsistency. In some cases, the servo state at the middle position would incorrectly appear as a minimum or maximum value. When that happened, the calibrated range drifted away from the real physical range, and the follower arm could move only within a reduced range, for example with the gripper no longer closing fully. In practice, the most useful fixes were unplugging and reconnecting power before recalibrating, checking whether another cable or servo connection was interfering with the reading, and verifying the affected joint carefully, especially around `servo6`.
 

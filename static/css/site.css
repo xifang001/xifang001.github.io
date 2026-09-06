@@ -968,6 +968,14 @@ li {
   line-height: 1.55;
 }
 
+.article-prose mjx-container[display="true"] {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.2rem;
+}
+
 .article-media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1056,8 +1064,8 @@ li {
   width: min(100%, 380px);
 }
 
-.article-figure-medium img,
-.article-figure-medium video {
+.article-prose .article-figure-medium img,
+.article-prose .article-figure-medium video {
   width: min(100%, 420px);
 }
 

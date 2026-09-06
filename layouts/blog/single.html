@@ -119,11 +119,24 @@
       max-width: 100%;
     }
 
+    .article-prose .article-figure-medium img,
+    .article-prose .article-figure-medium video {
+      width: min(100%, 420px);
+    }
+
     .article-prose figcaption {
       margin-top: 0.55rem;
       color: var(--muted, #64717a);
       font-size: 0.88rem;
       line-height: 1.55;
+    }
+
+    .article-prose mjx-container[display="true"] {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.2rem;
     }
 
     .article-tags {

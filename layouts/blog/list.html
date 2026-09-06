@@ -5,278 +5,19 @@
   {{ $machineLearning := where $allPosts ".Params.categories" "intersect" (slice "Machine Learning") }}
   {{ $researchNotes := where $allPosts ".Params.categories" "intersect" (slice "Research Notes") }}
   {{ $life := where $allPosts ".Params.categories" "intersect" (slice "Life") }}
-  <style>
-    .page-layout.blog-shell {
-      display: grid;
-      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
-      gap: 3.25rem;
-      align-items: start;
-    }
-
-    .blog-shell {
-      width: min(calc(100% - 2rem), 72rem);
-      margin: 0 auto;
-    }
-
-    .page-sidebar.home-sidebar {
-      position: sticky;
-      top: 7rem;
-      display: grid;
-      gap: 1.4rem;
-      align-content: start;
-      padding-top: 2.4rem;
-    }
-
-    .profile-strip-sidebar {
-      display: grid;
-      gap: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(221, 216, 205, 0.72);
-    }
-
-    .profile-avatar-large {
-      width: 132px;
-      height: 132px;
-      object-fit: cover;
-      border-radius: 22px;
-    }
-
-    .profile-copy {
-      display: grid;
-      gap: 0.45rem;
-    }
-
-    .sidebar-title {
-      margin: 0;
-      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-      font-size: clamp(1.2rem, 1.9vw, 1.55rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--text, #1b1f1d);
-    }
-
-    .profile-role {
-      margin: 0;
-      color: #44514b;
-      font-size: 0.98rem;
-      line-height: 1.6;
-    }
-
-    .sidebar-stack {
-      display: grid;
-      gap: 1.1rem;
-    }
-
-    .profile-contact-compact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-    }
-
-    .contact-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.42rem 0.72rem;
-      border: 1px solid var(--line, #d6dde3);
-      border-radius: 999px;
-      background: rgba(248, 250, 252, 0.92);
-      color: #33403b;
-      font-size: 0.92rem;
-      text-decoration: none;
-    }
-
-    .contact-icon {
-      width: 0.95rem;
-      height: 0.95rem;
-      display: inline-flex;
-      color: var(--accent, #0f5a61);
-    }
-
-    .contact-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .sidebar-nav {
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .sidebar-nav-link {
-      color: rgba(102, 112, 107, 0.9);
-      font-size: 1rem;
-      text-decoration: none;
-    }
-
-    .sidebar-nav-link.is-active,
-    .sidebar-nav-link:hover {
-      color: var(--text, #1b1f1d);
-    }
-
-    .blog-main {
-      min-width: 0;
-      padding-top: 2.4rem;
-    }
-
-    .blog-narrow {
-      width: min(calc(100% - 2rem), 48rem);
-    }
-
-    .blog-topbar {
-      padding: 0.15rem 0 1.2rem;
-    }
-
-    .blog-category-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      align-items: center;
-      padding-bottom: 0.15rem;
-    }
-
-    .blog-category-link {
-      color: rgba(102, 112, 107, 0.88);
-      font-size: 0.96rem;
-      text-decoration: none;
-    }
-
-    .blog-category-link:hover,
-    .blog-category-link:focus-visible {
-      color: var(--text, #1b1f1d);
-    }
-
-    .blog-group {
-      padding: 0.2rem 0 2rem;
-    }
-
-    .blog-group .section-heading h2 {
-      margin: 0 0 0.9rem;
-      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-      font-size: clamp(1.9rem, 3vw, 2.7rem);
-      line-height: 1.05;
-      color: var(--text, #1b1f1d);
-    }
-
-    .entry-list {
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .blog-entry {
-      padding-bottom: 1.1rem;
-      border-bottom: 1px solid var(--line, #d6dde3);
-    }
-
-    .blog-entry:last-child {
-      border-bottom: 0;
-    }
-
-    .blog-entry-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.55rem;
-    }
-
-    .blog-entry .card-kicker,
-    .blog-entry-series,
-    .blog-entry-category {
-      margin: 0;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .blog-entry .card-kicker,
-    .blog-entry-series {
-      color: #4c5953;
-    }
-
-    .blog-entry-category {
-      color: var(--accent, #0f5a61);
-    }
-
-    .blog-entry h3 {
-      margin: 0.25rem 0 0.2rem;
-      font-size: 1.08rem;
-      font-family: "Avenir Next", "Segoe UI", sans-serif;
-      font-weight: 500;
-      line-height: 1.45;
-      letter-spacing: 0;
-    }
-
-    .blog-entry h3 a {
-      color: var(--text, #1b1f1d);
-      text-decoration: none;
-    }
-
-    .blog-entry-part-note {
-      margin: 0.18rem 0 0.3rem;
-      color: var(--muted, #64717a);
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-
-    .blog-entry > p {
-      margin: 0;
-      color: #33403b;
-      line-height: 1.68;
-    }
-
-    .inline-link-row {
-      margin-top: 0.7rem;
-    }
-
-    .inline-link-row a {
-      color: var(--accent, #0f5a61);
-      text-decoration: none;
-    }
-
-    .section-empty-note {
-      margin: 0.15rem 0 0;
-      color: var(--muted, #64717a);
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 760px) {
-      .page-layout.blog-shell {
-        grid-template-columns: 1fr;
-        gap: 1.6rem;
-      }
-
-      .blog-shell {
-        width: min(calc(100% - 1rem), 72rem);
-      }
-
-      .page-sidebar.home-sidebar {
-        position: static;
-        top: auto;
-        padding-top: 0;
-      }
-
-      .blog-narrow {
-        width: min(calc(100% - 1rem), 48rem);
-      }
-
-      .blog-group .section-heading h2 {
-        font-size: 2rem;
-      }
-    }
-  </style>
   <section class="page-frame">
-    <div class="shell page-layout blog-shell">
+    <div class="shell page-layout">
       {{ partial "site-sidebar.html" . }}
-      <div class="page-main blog-main">
+      <div class="page-main">
         <section class="page-hero">
-          <div class="narrow blog-narrow">
+          <div class="narrow">
             <p class="eyebrow">Blog</p>
             <h1>{{ .Title }}</h1>
           </div>
         </section>
 
-        <section class="section-block section-block-blog-top blog-topbar">
-          <div class="narrow blog-narrow">
+        <section class="section-block section-block-blog-top">
+          <div class="narrow">
             <nav class="blog-category-bar" aria-label="Blog categories">
               <a class="blog-category-link" href="#robotics">Robotics</a>
               <a class="blog-category-link" href="#computer-vision">Computer Vision</a>
@@ -288,7 +29,7 @@
         </section>
 
         <section class="section-block project-group-block blog-group" id="robotics">
-          <div class="narrow blog-narrow">
+          <div class="narrow">
             <div class="section-heading"><div><h2>Robotics</h2></div></div>
             {{ if gt (len $robotics) 0 }}
               <div class="entry-list">
@@ -317,7 +58,7 @@
         </section>
 
         <section class="section-block project-group-block blog-group" id="computer-vision">
-          <div class="narrow blog-narrow">
+          <div class="narrow">
             <div class="section-heading"><div><h2>Computer Vision</h2></div></div>
             {{ if gt (len $computerVision) 0 }}
               <div class="entry-list">
@@ -346,7 +87,7 @@
         </section>
 
         <section class="section-block project-group-block blog-group" id="machine-learning">
-          <div class="narrow blog-narrow">
+          <div class="narrow">
             <div class="section-heading"><div><h2>Machine Learning</h2></div></div>
             {{ if gt (len $machineLearning) 0 }}
               <div class="entry-list">
@@ -375,7 +116,7 @@
         </section>
 
         <section class="section-block project-group-block blog-group" id="research-notes">
-          <div class="narrow blog-narrow">
+          <div class="narrow">
             <div class="section-heading"><div><h2>Research Notes</h2></div></div>
             {{ if gt (len $researchNotes) 0 }}
               <div class="entry-list">
@@ -404,7 +145,7 @@
         </section>
 
         <section class="section-block project-group-block blog-group" id="life">
-          <div class="narrow blog-narrow">
+          <div class="narrow">
             <div class="section-heading"><div><h2>Life</h2></div></div>
             {{ if gt (len $life) 0 }}
               <div class="entry-list">
