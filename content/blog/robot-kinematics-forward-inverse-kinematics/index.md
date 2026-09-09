@@ -14,7 +14,8 @@ tags:
 categories:
   - Robotics
 series:
-  - Robotics Notes
+  - Robot Kinematics Notes
+content_type: "Study Note"
 authors:
   - Xi Fang
 toc: false

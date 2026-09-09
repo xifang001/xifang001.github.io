@@ -3,7 +3,6 @@
   {{ $robotics := where $allPosts ".Params.categories" "intersect" (slice "Robotics") }}
   {{ $computerVision := where $allPosts ".Params.categories" "intersect" (slice "Computer Vision") }}
   {{ $machineLearning := where $allPosts ".Params.categories" "intersect" (slice "Machine Learning") }}
-  {{ $researchNotes := where $allPosts ".Params.categories" "intersect" (slice "Research Notes") }}
   {{ $life := where $allPosts ".Params.categories" "intersect" (slice "Life") }}
   <section class="page-frame">
     <div class="shell page-layout">
@@ -22,7 +21,6 @@
               <a class="blog-category-link" href="#robotics">Robotics</a>
               <a class="blog-category-link" href="#computer-vision">Computer Vision</a>
               <a class="blog-category-link" href="#machine-learning">Machine Learning</a>
-              <a class="blog-category-link" href="#research-notes">Research Notes</a>
               <a class="blog-category-link" href="#life">Life</a>
             </nav>
           </div>
@@ -37,6 +35,7 @@
                   <article class="text-entry blog-entry">
                     <div class="blog-entry-meta-row">
                       <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with .Params.content_type }}<p class="blog-entry-type">{{ . }}</p>{{ end }}
                       {{ with .Params.part_label }}<p class="blog-entry-series">{{ . }}</p>{{ end }}
                       {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
                     </div>
@@ -66,6 +65,7 @@
                   <article class="text-entry blog-entry">
                     <div class="blog-entry-meta-row">
                       <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with .Params.content_type }}<p class="blog-entry-type">{{ . }}</p>{{ end }}
                       {{ with .Params.part_label }}<p class="blog-entry-series">{{ . }}</p>{{ end }}
                       {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
                     </div>
@@ -95,35 +95,7 @@
                   <article class="text-entry blog-entry">
                     <div class="blog-entry-meta-row">
                       <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
-                      {{ with .Params.part_label }}<p class="blog-entry-series">{{ . }}</p>{{ end }}
-                      {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
-                    </div>
-                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                    {{ if or .Params.part_label .Params.part_summary }}
-                      <p class="blog-entry-part-note">
-                        {{ with .Params.part_label }}{{ . }}{{ end }}{{ if and .Params.part_label .Params.part_summary }} · {{ end }}{{ with .Params.part_summary }}{{ . }}{{ end }}
-                      </p>
-                    {{ end }}
-                    {{ with .Params.summary }}<p>{{ . }}</p>{{ else }}<p>{{ .Summary }}</p>{{ end }}
-                    <div class="inline-link-row"><a href="{{ .RelPermalink }}">Read article</a></div>
-                  </article>
-                {{ end }}
-              </div>
-            {{ else }}
-              <p class="section-empty-note">Posts in this category will be added here.</p>
-            {{ end }}
-          </div>
-        </section>
-
-        <section class="section-block project-group-block blog-group" id="research-notes">
-          <div class="narrow">
-            <div class="section-heading"><div><h2>Research Notes</h2></div></div>
-            {{ if gt (len $researchNotes) 0 }}
-              <div class="entry-list">
-                {{ range $researchNotes }}
-                  <article class="text-entry blog-entry">
-                    <div class="blog-entry-meta-row">
-                      <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with .Params.content_type }}<p class="blog-entry-type">{{ . }}</p>{{ end }}
                       {{ with .Params.part_label }}<p class="blog-entry-series">{{ . }}</p>{{ end }}
                       {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
                     </div>
@@ -153,6 +125,7 @@
                   <article class="text-entry blog-entry">
                     <div class="blog-entry-meta-row">
                       <p class="card-kicker">{{ .Date.Format "Jan 2, 2006" }}</p>
+                      {{ with .Params.content_type }}<p class="blog-entry-type">{{ . }}</p>{{ end }}
                       {{ with .Params.part_label }}<p class="blog-entry-series">{{ . }}</p>{{ end }}
                       {{ with index .Params.categories 0 }}<p class="blog-entry-category">{{ . }}</p>{{ end }}
                     </div>

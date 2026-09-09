@@ -11,9 +11,10 @@ tags:
   - Reinforcement Learning
   - Learning Systems
 categories:
-  - Research Notes
+  - Machine Learning
 series:
-  - Research Reflections
+  - Learning Reflections
+content_type: "Reflection"
 authors:
   - Xi Fang
 toc: false

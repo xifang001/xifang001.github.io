@@ -745,6 +745,18 @@ li {
   text-transform: uppercase;
 }
 
+.blog-entry-type {
+  margin: 0;
+  padding: 0.14rem 0.42rem;
+  border-radius: 999px;
+  background: rgba(13, 102, 112, 0.1);
+  color: #0d6670;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .blog-entry-series {
   margin: 0;
   color: #4c5953;

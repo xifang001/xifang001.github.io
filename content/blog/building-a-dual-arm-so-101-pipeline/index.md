@@ -14,7 +14,8 @@ tags:
 categories:
   - Robotics
 series:
-  - Robotics Notes
+  - SO-101 Build Log
+content_type: "Build Log"
 authors:
   - Xi Fang
 toc: false

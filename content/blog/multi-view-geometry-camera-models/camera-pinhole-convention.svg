@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" role="img" aria-labelledby="title desc">
+  <title id="title">Physical pinhole camera and virtual image plane</title>
+  <desc id="desc">A camera body has a pinhole at its center and a sensor behind it. An equivalent virtual image plane is in front, with focal length and field of view labeled.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#0d6670"/></marker>
+    <style>
+      .label{font:27px 'Avenir Next','Helvetica Neue',sans-serif;fill:#223033}.small{font:22px 'Avenir Next','Helvetica Neue',sans-serif;fill:#637176}.math{font:italic 28px Georgia,serif;fill:#223033}.note{font:24px 'Avenir Next','Helvetica Neue',sans-serif;fill:#0d6670;font-weight:600}
+    </style>
+  </defs>
+  <rect x="8" y="8" width="1084" height="604" rx="34" fill="#f8faf9" stroke="#d4dfe1" stroke-width="2"/>
+  <line x1="90" y1="310" x2="1020" y2="310" stroke="#afbdc0" stroke-width="2" stroke-dasharray="9 10"/>
+  <text x="896" y="292" class="small">optical axis</text>
+  <path d="M100 164 L100 256 L164 256 L164 364 L100 364 L100 456" fill="none" stroke="#c56535" stroke-width="7"/>
+  <text x="65" y="135" class="label">scene</text>
+  <path d="M129 205 L164 256 M129 415 L164 364" fill="none" stroke="#c56535" stroke-width="4"/>
+  <rect x="450" y="135" width="110" height="350" rx="18" fill="#e6edef" stroke="#637176" stroke-width="3"/>
+  <text x="432" y="525" class="label">camera body</text>
+  <circle cx="505" cy="310" r="10" fill="#152124"/>
+  <text x="462" y="115" class="label">pinhole</text>
+  <line x1="720" y1="157" x2="720" y2="463" stroke="#c56535" stroke-width="7"/>
+  <text x="658" y="510" class="label">physical sensor</text>
+  <text x="742" y="192" class="small">behind pinhole</text>
+  <line x1="505" y1="310" x2="720" y2="177" stroke="#c56535" stroke-width="3"/>
+  <line x1="505" y1="310" x2="720" y2="443" stroke="#c56535" stroke-width="3"/>
+  <path d="M720 221 L720 275 L685 275 L685 345 L720 345 L720 399" fill="none" stroke="#c56535" stroke-width="5"/>
+  <text x="742" y="340" class="small">inverted image</text>
+  <line x1="505" y1="78" x2="720" y2="78" stroke="#0d6670" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <line x1="505" y1="88" x2="505" y2="126" stroke="#0d6670" stroke-width="2"/><line x1="720" y1="88" x2="720" y2="142" stroke="#0d6670" stroke-width="2"/>
+  <text x="577" y="63" class="math">f</text><text x="599" y="63" class="small">physical focal length</text>
+  <line x1="290" y1="125" x2="290" y2="495" stroke="#0d6670" stroke-width="6"/>
+  <text x="150" y="535" class="note">virtual image plane</text><text x="177" y="566" class="small">used in camera geometry</text>
+  <line x1="505" y1="310" x2="290" y2="177" stroke="#0d6670" stroke-width="3" stroke-dasharray="8 7"/>
+  <line x1="505" y1="310" x2="290" y2="443" stroke="#0d6670" stroke-width="3" stroke-dasharray="8 7"/>
+  <path d="M432 205 A130 130 0 0 0 432 415" fill="none" stroke="#0d6670" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="315" y="287" class="math">FOV</text><text x="315" y="316" class="small">depends on</text><text x="315" y="343" class="small">sensor size and f</text>
+</svg>

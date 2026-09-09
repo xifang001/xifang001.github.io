@@ -1,10 +1,10 @@
 ---
 title: "Multi-View Geometry"
 date: 2026-09-05
-lastmod: 2026-09-05
+lastmod: 2026-09-06
 slug: "multi-view-geometry-camera-models"
-summary: "Part I develops the pinhole camera model and the geometry that maps a 3D world point to a 2D pixel."
-description: "A technical introduction to camera models, perspective projection, homogeneous coordinates, intrinsics, extrinsics, and camera centers."
+summary: "Part I builds the camera model from an intuitive idea of projection to the geometry that maps a 3D world point to a 2D pixel."
+description: "An intuitive and technical introduction to perspective projection, coordinate systems, homogeneous coordinates, camera intrinsics, extrinsics, and camera centers."
 tags:
   - Computer Vision
   - Multi-View Geometry
@@ -15,85 +15,116 @@ categories:
   - Computer Vision
 series:
   - Multi-View Geometry Notes
+content_type: "Study Note"
 authors:
   - Xi Fang
 toc: false
 draft: false
 math: true
 part_label: "Part I"
-part_summary: "Camera models and perspective projection"
+part_summary: "From 3D points to image pixels"
 ---
 
-A camera model answers one foundational question: how does a point in three-dimensional space become a point in a two-dimensional image? The compact answer is
+A shadow is a familiar example of projection: a three-dimensional object leaves a two-dimensional pattern on a surface. Its outline may remain recognizable, while depth is lost. A camera performs a more structured version of the same reduction.
+
+In the ideal pinhole model, every visible 3D point defines a ray through one camera center, and the image records where that ray intersects an image plane. This is a <span class="focus-label">central projection</span>; sunlight, by contrast, is often approximated by parallel rays and produces something closer to an orthographic projection.
+
+The camera model can therefore be built as one continuous chain. A point is first described relative to the camera, then projected onto a normalized image plane, and finally expressed in pixel coordinates. The first step is rigid; the second is projective and loses depth; the third only changes units and origin. Following this order keeps the roles of extrinsics and intrinsics distinct.
+
+## Position and Orientation: Extrinsics
+
+The location of a physical point does not change when the coordinate frame changes; only its numerical coordinates do. Let \(X_W\) denote a point in the world frame and \(X_C\) the same point in the camera frame. This article uses the world-to-camera convention
 
 \[
-\tilde{x} \sim P\tilde{X}_W.
+X_C = RX_W+t.
 \]
 
-Here, \(\tilde{X}_W \in \mathbb{P}^3\) is a homogeneous 3D point, \(\tilde{x} \in \mathbb{P}^2\) is a homogeneous image point, and \(P \in \mathbb{R}^{3\times4}\) is the camera matrix. The symbol \(\sim\) means equality up to a nonzero scale. This single relation is the starting point for calibration, pose estimation, stereo vision, triangulation, and structure from motion.
-
-## Coordinate Convention
-
-Before deriving the projection, we need to specify the direction of every transformation. Let a world point be \(X_W\), and adopt the world-to-camera convention
+Here, \(R\in SO(3)\) and \(t\in\mathbb{R}^3\) form a rigid change of frame. The camera's <span class="focus-label">position</span> is its center \(C_W\) in world coordinates; its <span class="focus-label">orientation</span> specifies how the camera axes are turned relative to the world. Under this convention, \(R\) encodes the orientation and
 
 \[
-X_C = RX_W + t.
+t=-RC_W.
 \]
 
-The rotation \(R\) and translation \(t\) therefore convert coordinates expressed in the world frame into coordinates expressed in the camera frame. They are not, in this form, the camera pose in the world frame. Keeping this distinction explicit prevents one of the most common camera-geometry mistakes.
+Position and orientation therefore determine the translation together: rotating a camera in place leaves \(C_W\) unchanged but changes \(t\). The matrix \([R\mid t]\) maps <span class="focus-label">world coordinates into camera coordinates</span>; it is not the camera-to-world pose. Different libraries adopt different conventions, so this direction should always be stated explicitly. The geometry and key properties of \(SO(3)\) are developed further in [Robot Kinematics, Part I](/blog/robot-kinematics-coordinate-frames-so3-se3/).
 
-## The Pinhole Model
+## What the Pinhole Keeps and Loses
 
-The ideal pinhole camera maps every visible 3D point along a ray through the camera center onto an image plane. Consider a point in camera coordinates,
+With the point now expressed in the camera frame, the next question is optical: where does its ray meet the image plane? A physical pinhole camera places the sensor <em>behind</em> the aperture and forms an inverted image. Its focal length \(f\) is the pinhole-to-sensor distance. For geometric derivations, an equivalent <span class="focus-label">virtual image plane</span> is placed in front of the pinhole. It represents the same viewing directions without carrying a sign change or an inverted image through every equation.
+
+<figure class="article-figure-wide">
+  <img src="camera-pinhole-convention.svg" alt="A pinhole camera with a physical sensor behind the aperture and an equivalent virtual image plane in front. The physical focal length and the horizontal field of view are labeled.">
+  <figcaption>Figure 1. The physical pinhole camera forms an inverted image on its sensor. For geometry, we use the equivalent virtual plane in front of the pinhole; it makes the normalized coordinates \(x_n=X_C/Z_C\), \(y_n=Y_C/Z_C\) positive in the usual camera axes.</figcaption>
+</figure>
+
+The physical construction accounts for image formation; the virtual construction supplies a convenient coordinate convention. Let
 
 \[
-X_C = \begin{bmatrix}X_C & Y_C & Z_C\end{bmatrix}^{\mathsf T},
-\qquad Z_C > 0.
+X_C=
+\begin{bmatrix}
+X_C&Y_C&Z_C
+\end{bmatrix}^{\mathsf T},
+\qquad Z_C>0.
 \]
 
-Intersecting its ray with the normalized image plane \(Z=1\) gives
+The camera center is the origin and the positive \(Z_C\)-axis is the viewing direction. The ray through \(X_C\) intersects the virtual plane \(Z=1\) at
 
 \[
-x_n = \frac{X_C}{Z_C},
+x_n=\frac{X_C}{Z_C},
 \qquad
-y_n = \frac{Y_C}{Z_C}.
+y_n=\frac{Y_C}{Z_C}.
 \]
 
 <figure class="article-figure-wide">
   <img src="pinhole-projection.svg" alt="A pinhole camera projects two 3D points on the same ray onto one point on the normalized image plane.">
-  <figcaption>Figure 1. Perspective projection maps a 3D point to the intersection of its camera ray with the normalized image plane. Points on the same ray produce the same image location.</figcaption>
+  <figcaption>Figure 2. Perspective projection keeps the direction of a camera ray but discards position along that ray. Two 3D points on the same ray therefore produce the same image point.</figcaption>
 </figure>
 
-The division by \(Z_C\) creates perspective: more distant points appear smaller. It also removes absolute depth. For any positive scalar \(\lambda\), the points \(X_C\) and \(\lambda X_C\) lie on the same ray and project to the same normalized coordinate. A single ideal image therefore constrains a 3D point to a ray, not to a unique depth.
-
-## Homogeneous Coordinates
-
-Perspective division is nonlinear in ordinary Cartesian coordinates. Homogeneous coordinates let us express the projection as a matrix multiplication followed by one normalization step.
-
-A world point and an image point are represented as
+The division by \(Z_C\) explains two familiar visual effects. First, an object appears smaller as it moves farther from the camera. Second, absolute depth disappears. For any positive scalar \(\alpha\),
 
 \[
-\tilde{X}_W =
+\frac{\alpha X_C}{\alpha Z_C}=\frac{X_C}{Z_C},
+\qquad
+\frac{\alpha Y_C}{\alpha Z_C}=\frac{Y_C}{Z_C}.
+\]
+
+All points on the same ray project to the same location. A pixel therefore does not identify a unique 3D point; it identifies a viewing ray. This ambiguity is not a defect of an algorithm. It is built into the geometry of a single camera.
+
+This observation is also the motivation for multi-view geometry. A second camera contributes another ray, and their geometric agreement can recover information that either image alone has lost.
+
+## Why Homogeneous Coordinates Appear
+
+The perspective division above is nonlinear in ordinary Cartesian coordinates. Homogeneous coordinates do not remove that division, but they postpone it and let the rest of the camera model be written as matrix multiplication.
+
+A 3D world point and a 2D image point are represented as
+
+\[
+\tilde{X}_W=
 \begin{bmatrix}
-X_W & Y_W & Z_W & 1
+X_W&Y_W&Z_W&1
 \end{bmatrix}^{\mathsf T},
 \qquad
-\tilde{x} =
+\tilde{x}=
 \begin{bmatrix}
-u' & v' & w'
+u'&v'&w'
 \end{bmatrix}^{\mathsf T}.
 \]
 
-The Euclidean pixel coordinate is recovered by dehomogenization:
+The Euclidean pixel coordinate is recovered at the end by dehomogenization:
 
 \[
-u = \frac{u'}{w'},
+u=\frac{u'}{w'},
 \qquad
-v = \frac{v'}{w'},
-\qquad w' \neq 0.
+v=\frac{v'}{w'},
+\qquad w'\neq0.
 \]
 
-This explains both the dimensions of \(P\) and the projective scale ambiguity:
+Multiplying a homogeneous vector by any nonzero scalar represents the same Euclidean point. That is why projective equations use \(\sim\), meaning equality up to scale:
+
+\[
+\tilde{x}\sim P\tilde{X}_W.
+\]
+
+The dimensions now follow naturally:
 
 \[
 \underbrace{\tilde{x}}_{3\times1}
@@ -102,96 +133,108 @@ This explains both the dimensions of \(P\) and the projective scale ambiguity:
 \underbrace{\tilde{X}_W}_{4\times1}.
 \]
 
-The relation is not an ordinary Euclidean equality. Multiplying \(\tilde{x}\) or \(P\) by any nonzero scalar leaves the represented image point unchanged.
+The \(3\times4\) matrix produces three homogeneous image coordinates from four homogeneous world coordinates. It does not directly produce the final two Euclidean pixel coordinates; the last division still has to happen.
 
-## From World Coordinates to Pixels
+## Building the Camera Matrix
 
-For an ideal perspective camera, the projection matrix factors as
+We can now assemble the three stages into one expression. For an ideal perspective camera,
 
 \[
-P = K\begin{bmatrix}R & t\end{bmatrix}.
+P=K\begin{bmatrix}R&t\end{bmatrix},
 \]
 
-This factorization separates two different operations. The extrinsics \(\begin{bmatrix}R&t\end{bmatrix}\) change coordinates from the world frame to the camera frame. The intrinsic matrix \(K\) converts normalized camera coordinates into pixel coordinates. The complete chain is
+where \(P\) is the complete \(3\times4\) camera projection matrix. The extrinsic matrix \(\begin{bmatrix}R&t\end{bmatrix}\) changes a point from world coordinates into camera coordinates. The \(3\times3\) matrix \(K\) is the <span class="focus-label">camera intrinsic matrix</span>: it uses the camera's focal lengths and principal point to convert normalized image-plane coordinates into pixel coordinates. In short, the extrinsics describe where the camera is, while \(K\) describes how that camera maps viewing directions onto its image sensor.
+
+The complete projection is
 
 \[
 \lambda
 \begin{bmatrix}
 u\\v\\1
-\end{bmatrix} =
+\end{bmatrix}=
 K\begin{bmatrix}R&t\end{bmatrix}
 \begin{bmatrix}
 X_W\\Y_W\\Z_W\\1
 \end{bmatrix},
-\qquad \lambda \neq 0.
+\qquad \lambda\neq0.
 \]
 
-Conceptually, the pipeline is
+Here, \(\lambda\) is a <span class="focus-label">projective scale</span>, not an additional camera parameter. The matrix multiplication on the right produces a homogeneous image vector whose last component is generally not \(1\). The scale \(\lambda\) absorbs that component so that the image point can be written as \(\begin{bmatrix}u&v&1\end{bmatrix}^{\mathsf T}\). With the standard intrinsic matrix used here, \(\lambda=Z_C\), the depth of the point in the camera frame. Dividing by \(\lambda\) is therefore the same perspective division by \(Z_C\) introduced earlier.
+
+The compact equation \(\tilde{x}\sim P\tilde{X}_W\) is therefore not one mysterious transformation. It is a composition of a rigid frame change, a depth-dependent projection, and a conversion into pixel units.
+
+## The Camera Center
+
+In the ideal pinhole model, the camera center is the pinhole itself: every viewing ray passes through that one point. For a real lens camera, it is the corresponding effective projection center, not the sensor location. The translation \(t\) should not be mistaken for this center. Since \(C_W\) becomes the origin of the camera frame,
 
 \[
-\text{world point}
-\xrightarrow{\ [R\mid t]\ }
-\text{camera point}
-\xrightarrow{\ \text{divide by }Z_C\ }
-\text{normalized image point}
-\xrightarrow{\ K\ }
-\text{pixel}.
+0=RC_W+t.
 \]
 
-## Intrinsic Parameters
-
-The intrinsic matrix is commonly written as
+Therefore,
 
 \[
-K =
-\begin{bmatrix}
-f_x & s & c_x\\
-0 & f_y & c_y\\
-0 & 0 & 1
-\end{bmatrix}.
-\]
-
-The focal lengths \(f_x\) and \(f_y\) are measured in pixels, \((c_x,c_y)\) is the principal point, and \(s\) is the skew between the pixel axes. Modern cameras usually have negligible skew, so many implementations set \(s=0\).
-
-Applying \(K\) after perspective division gives
-
-\[
-u = f_x x_n + s y_n + c_x,
-\qquad
-v = f_y y_n + c_y.
-\]
-
-The same physical focal length can produce different values of \(f_x\) and \(f_y\) because these quantities include pixel scale. If an image is resized, the focal lengths and principal point must be scaled consistently with the image coordinates.
-
-## Extrinsic Parameters and Camera Center
-
-Under our convention,
-
-\[
-X_C = RX_W+t,
-\]
-
-the extrinsics describe a change of coordinates from world to camera. The vector \(t\) is therefore not generally the camera center expressed in world coordinates.
-
-The camera center \(C_W\) is the world point that maps to the camera-frame origin. Setting \(X_C=0\) gives
-
-\[
-RC_W+t=0,
-\qquad
 C_W=-R^{\mathsf T}t,
 \]
 
-because \(R^{-1}=R^{\mathsf T}\). In homogeneous coordinates, the same geometric fact appears as
+where we used \(R^{-1}=R^{\mathsf T}\). In homogeneous coordinates, the same fact is expressed as
 
 \[
 P\tilde{C}_W=0.
 \]
 
-Thus, the camera center is the right null vector of \(P\). Every image measurement defines a ray passing through this center.
+The camera center is the right null vector of \(P\), matching the geometry: every image ray begins there.
 
-## A Numerical Projection
+## Intrinsics: Converting Rays into Pixels
 
-Consider a calibrated camera with zero skew,
+The projection step produces a location on an ideal normalized plane. A digital image, however, is indexed in pixels. The intrinsic matrix performs this final conversion:
+
+\[
+K=
+\begin{bmatrix}
+f_x&s&c_x\\
+0&f_y&c_y\\
+0&0&1
+\end{bmatrix}.
+\]
+
+The focal lengths \(f_x\) and \(f_y\) are measured in pixels, \((c_x,c_y)\) is the principal point, and \(s\) describes skew between the pixel axes. For most modern cameras, skew is negligible and set to zero.
+
+The name “focal length” connects \(K\) back to Figure 1. Let \(f_{\rm mm}\) be the physical pinhole-to-sensor distance, and let \(W_{\rm sensor}\) and \(H_{\rm sensor}\) be the physical sensor width and height. Together they set the field of view:
+
+\[
+\operatorname{FOV}_x=2\arctan\!\left(\frac{W_{\rm sensor}}{2f_{\rm mm}}\right),
+\qquad
+\operatorname{FOV}_y=2\arctan\!\left(\frac{H_{\rm sensor}}{2f_{\rm mm}}\right).
+\]
+
+With a fixed sensor, a shorter focal length places the sensor closer to the pinhole and accepts rays at a wider angle, so the field of view is larger. With a fixed focal length, a larger sensor also captures a wider field. These are the two pieces behind familiar phrases such as “wide-angle lens” and “large sensor.”
+
+The entries in \(K\) use pixels rather than millimetres. If one pixel has physical pitches \(p_x,p_y\) (millimetres per pixel), then approximately
+
+\[
+f_x=\frac{f_{\rm mm}}{p_x},\qquad f_y=\frac{f_{\rm mm}}{p_y}.
+\]
+
+Thus \(f_x,f_y\) say how many pixels of image displacement correspond to a unit change on the normalized plane. The principal point \((c_x,c_y)\) is where the optical axis meets the sensor, expressed in pixel coordinates; it is often near, but not necessarily exactly at, the image centre. This is why the final step needs both a scale \((f_x,f_y)\) and an offset \((c_x,c_y)\). Pixels need not be square, which is why \(f_x\) and \(f_y\) are retained separately.
+
+The eye offers a helpful, deliberately imperfect analogy. The pupil is the aperture, the eye's lens focuses the scene, and the retina is the light-sensitive surface where the image is recorded. Looking around changes the eye's orientation—an extrinsic change—while its optical geometry plays the role of intrinsics. Unlike the ideal camera, however, the eye has a lens rather than a pinhole and a curved retina, so this is an intuition aid rather than a literal model.
+
+For the usual zero-skew camera, applying \(K\) completes the path from a viewing direction to a pixel:
+
+\[
+u=f_x x_n+c_x,
+\qquad
+v=f_y y_n+c_y.
+\]
+
+The more general expression is \(u=f_xx_n+sy_n+c_x\). The extra \(sy_n\) term appears only when the pixel axes are skewed rather than perpendicular; for modern cameras, \(s=0\), so \(u\) depends only on \(x_n\).
+
+The intrinsic parameters belong to the imaging system rather than to a particular scene. They remain reusable while the camera configuration is fixed. If the image is resized, however, \(f_x\), \(f_y\), \(c_x\), and \(c_y\) must be scaled with the pixel coordinates.
+
+## Following One Point Through the Pipeline
+
+Consider a camera with zero skew and
 
 \[
 K=
@@ -199,10 +242,10 @@ K=
 800&0&640\\
 0&800&360\\
 0&0&1
-\end{bmatrix},
+\end{bmatrix}.
 \]
 
-and a point already expressed in camera coordinates:
+Suppose the rigid world-to-camera transformation has already placed a point at
 
 \[
 X_C=
@@ -211,13 +254,14 @@ X_C=
 \end{bmatrix}^{\mathsf T}\text{ m}.
 \]
 
-Perspective division produces
+Perspective division first removes the depth scale:
 
 \[
-(x_n,y_n)=\left(0.1,0.05\right).
+(x_n,y_n)=\left(\frac{0.2}{2.0},\frac{0.1}{2.0}\right)
+=(0.1,0.05).
 \]
 
-Applying the intrinsics gives
+The intrinsics then convert that normalized location to pixels:
 
 \[
 u=800(0.1)+640=720,
@@ -225,17 +269,25 @@ u=800(0.1)+640=720,
 v=800(0.05)+360=400.
 \]
 
-The 3D point therefore projects to pixel \((720,400)\). This small example captures the full ideal pipeline: change frames if necessary, divide by depth, and apply the intrinsics.
+The point projects to pixel \((720,400)\). Notice what can and cannot be recovered from this result. The pixel preserves the direction of the point relative to the camera, but without another constraint it cannot tell us that the original depth was \(2.0\) meters.
 
-## Where the Ideal Model Stops
+## The Ideal Model and a Real Camera
 
-The matrix \(P=K[R\mid t]\) models ideal perspective projection, but a real imaging pipeline needs several additional checks. A geometrically projected point must lie in front of the camera and within the image bounds to be visible. Real lenses also introduce radial and tangential distortion, which cannot be absorbed into a single \(3\times4\) projective matrix.
+The matrix \(P=K[R\mid t]\) describes an ideal pinhole camera. A production imaging pipeline has additional concerns. A point must have valid positive depth and land inside the image bounds to be visible. Real lenses also introduce radial and tangential distortion, neither of which can be represented by a single \(3\times4\) projective matrix.
 
-In practice, calibration estimates \(K\), distortion coefficients, and one or more camera poses. Projection code then transforms a world point into the camera frame, normalizes by depth, applies distortion in normalized coordinates, and finally converts to pixels. Mixing distorted observations with an undistorted pinhole model is a common source of systematic reprojection error.
+In practice, calibration estimates \(K\), distortion coefficients, and camera poses. Projection code typically changes the reference frame, divides by depth, applies a lens-distortion model in normalized coordinates, and then converts to pixels. Mixing distorted observations with an undistorted pinhole model often produces structured reprojection errors, especially near the image boundary.
 
-## Takeaway
+## Closing Perspective
 
-The equation \(\tilde{x}\sim P\tilde{X}_W\) is compact, but it contains a complete geometric pipeline. Extrinsics determine how the world is viewed from the camera, perspective division removes depth along each viewing ray, and intrinsics express the result in pixels. Once these conventions are fixed, multiple-view geometry can ask the inverse question: given corresponding image rays from several cameras, what 3D structure produced them?
+Camera projection combines two different kinds of geometry. The rigid part changes <span class="focus-label">how a point is described</span>; the projective part changes <span class="focus-label">how much of that point can be observed</span>. The first is invertible when the camera pose is known. The second deliberately discards depth.
+
+That distinction turns the compact expression
+
+\[
+\tilde{x}\sim K\begin{bmatrix}R&t\end{bmatrix}\tilde{X}_W
+\]
+
+from a formula to memorize into a process we can reason about. It also sets up the central question of the next parts: if one image gives only a ray, how can multiple views constrain the 3D point that generated it?
 
 ## References
 
