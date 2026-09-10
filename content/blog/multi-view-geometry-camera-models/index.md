@@ -75,8 +75,8 @@ y_n=\frac{Y_C}{Z_C}.
 \]
 
 <figure class="article-figure-wide">
-  <img src="pinhole-projection.svg" alt="A pinhole camera projects two 3D points on the same ray onto one point on the normalized image plane.">
-  <figcaption>Figure 2. Perspective projection keeps the direction of a camera ray but discards position along that ray. Two 3D points on the same ray therefore produce the same image point.</figcaption>
+  <img src="hartley-zisserman-fig-6-1.png" alt="Pinhole camera geometry showing the camera centre, image plane, principal axis, principal point, focal length, and perspective projection of a 3D point.">
+  <figcaption>Figure 2. Pinhole camera geometry. The left construction locates the image plane and principal point; the right construction shows the similar triangles behind perspective division. Reproduced from Hartley and Zisserman, Fig. 6.1.</figcaption>
 </figure>
 
 The division by \(Z_C\) explains two familiar visual effects. First, an object appears smaller as it moves farther from the camera. Second, absolute depth disappears. For any positive scalar \(\alpha\),
