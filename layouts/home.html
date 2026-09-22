@@ -41,6 +41,49 @@
         <section class="section-block section-block-home">
           <div class="section-heading">
             <div>
+              <h2>Selected Blogs</h2>
+            </div>
+            <a class="section-link" href="{{ `/blog/` | relURL }}">View all</a>
+          </div>
+          <div class="selected-blog-list">
+            {{ with .Site.GetPage "/blog/building-a-dual-arm-so-101-pipeline" }}
+              {{ $post := . }}
+              <article class="selected-blog-card">
+                {{ with .Resources.GetMatch "replay-preview-last-frame.jpg" }}
+                  <a class="selected-blog-image" href="{{ $post.RelPermalink }}">
+                    <img src="{{ .RelPermalink }}" alt="The final frame of the carrot-to-box replay shown in Figure 12.">
+                  </a>
+                {{ end }}
+                <div class="selected-blog-copy">
+                  <p class="selected-blog-meta">{{ .Params.content_type }} · {{ .Params.part_label }} · Robotics</p>
+                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                  <p class="selected-blog-summary">{{ .Params.part_summary }}</p>
+                  <a class="inline-link-row" href="{{ .RelPermalink }}">Read article</a>
+                </div>
+              </article>
+            {{ end }}
+            {{ with .Site.GetPage "/blog/vla-post-training-lora-family" }}
+              {{ $post := . }}
+              <article class="selected-blog-card">
+                {{ with .Resources.GetMatch "libero-long-frame.jpg" }}
+                  <a class="selected-blog-image" href="{{ $post.RelPermalink }}">
+                    <img src="{{ .RelPermalink }}" alt="A simulated robot manipulation scene from the LIBERO-10 Long dataset.">
+                  </a>
+                {{ end }}
+                <div class="selected-blog-copy">
+                  <p class="selected-blog-meta">{{ .Params.content_type }} · {{ .Params.part_label }} · Robotics</p>
+                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                  <p class="selected-blog-summary">{{ .Params.part_summary }}</p>
+                  <a class="inline-link-row" href="{{ .RelPermalink }}">Read article</a>
+                </div>
+              </article>
+            {{ end }}
+          </div>
+        </section>
+
+        <section class="section-block section-block-home">
+          <div class="section-heading">
+            <div>
               <h2>Recent News</h2>
             </div>
           </div>

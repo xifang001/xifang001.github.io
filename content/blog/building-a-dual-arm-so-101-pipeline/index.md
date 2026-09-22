@@ -27,7 +27,7 @@ part_summary: "Hardware bring-up, teleoperation, and data collection"
 
 I have been building a small robot learning pipeline around the SO-101, starting from hardware assembly and calibration and moving toward data collection, training, and inference.
 
-This post is the first part of that process. It focuses on getting the hardware working reliably for teleoperation, bringing up the camera stack, and collecting an initial dataset. Later posts will cover training and inference on top of the same setup.
+This post is the first part of that process. It focuses on getting the hardware working reliably for teleoperation, bringing up the camera stack, and collecting an initial dataset. [Part II](/blog/building-a-dual-arm-so-101-post-training/) uses those recordings to post-train a VLA; Part III will close the loop with deployment and control.
 
 ## Hardware Build
 
@@ -362,7 +362,7 @@ The two replay clips below provide a direct comparison between the collected car
 
 The main lesson from this first build cycle was that reliability matters before scale. Before thinking about policy quality, model size, or sim-to-real transfer, the hardware and data pipeline need to behave consistently. A small calibration error, unstable camera setup, or recording bug can easily dominate everything downstream. That was exactly the point of starting with a simple carrot-to-box task: it was easy enough to execute repeatedly, but still sufficient to reveal whether teleoperation, sensing, recording, and replay were actually working together as a system.
 
-The next stage is to move from this validated data loop into training and inference: using the recorded demonstrations to train a policy, testing rollout behavior, and then iterating on both the task setup and the data quality. I am especially interested in how far this setup can go toward sim-to-real transfer, lightweight post-training, and more efficient policy improvement. I expect the more interesting lessons to come from that stage, especially around how much data is actually needed, what failures appear first during inference, and how simulation and real-world execution should be combined.
+The next stage is [Part II: VLA post-training](/blog/building-a-dual-arm-so-101-post-training/), which converts the carrot-to-box recordings into a GR00T N1.7 fine-tuning input. Part III will then connect the trained policy to deployment and closed-loop control.
 
 ## References
 

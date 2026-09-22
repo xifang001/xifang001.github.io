@@ -458,6 +458,89 @@ li {
   letter-spacing: -0.005em;
 }
 
+.selected-blog-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.selected-blog-card {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, var(--paper) 82%, var(--wash));
+}
+
+.selected-blog-image {
+  display: block;
+  overflow: hidden;
+  height: 9rem;
+  align-self: center;
+  border-radius: 0.55rem;
+}
+
+.selected-blog-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.selected-blog-copy {
+  align-self: center;
+  padding: 0.1rem 0.2rem 0.1rem 0;
+}
+
+.selected-blog-card h3 {
+  margin: 0.2rem 0 0.3rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 1.18rem;
+  line-height: 1.25;
+}
+
+.selected-blog-card h3 a {
+  color: var(--text);
+}
+
+.selected-blog-card h3 a:hover {
+  color: var(--accent);
+}
+
+.selected-blog-meta,
+.selected-blog-summary {
+  margin: 0;
+}
+
+.selected-blog-meta {
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.selected-blog-summary {
+  color: #36403c;
+}
+
+.selected-blog-card .inline-link-row {
+  display: inline-block;
+  margin-top: 0.55rem;
+  color: var(--accent);
+}
+
+@media (max-width: 520px) {
+  .selected-blog-card {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-blog-image {
+    height: 10rem;
+  }
+}
+
 .sidebar-stack {
   display: grid;
   gap: 1.35rem;
@@ -1011,6 +1094,25 @@ li {
   justify-content: center;
 }
 
+.article-media-grid--dataset-pair {
+  grid-template-columns: repeat(2, minmax(0, 260px));
+  justify-content: center;
+}
+
+.article-media-grid--dataset-pair .dataset-frame {
+  height: 144px;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.article-prose .article-media-grid--dataset-pair .dataset-frame img {
+  display: block;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  border-radius: 0;
+}
+
 .article-media-grid--data-pair {
   grid-template-columns: repeat(2, minmax(0, 340px));
   justify-content: center;
@@ -1181,6 +1283,7 @@ li {
   }
 
   .article-media-grid--compact-two,
+  .article-media-grid--dataset-pair,
   .article-media-grid--data-pair,
   .article-media-grid--tele {
     grid-template-columns: 1fr;
