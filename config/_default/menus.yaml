@@ -23,6 +23,6 @@ main:
     url: "/awards/"
     weight: 6
 
-  - name: "CV"
-    url: "/uploads/xi_fang_machine_learning_research_engineer.pdf"
+  - name: "Resume"
+    url: "/uploads/resume.pdf"
     weight: 7

@@ -94,17 +94,53 @@ T(t)\,\sigma(\mathbf r(t))\,
 
 Each factor has a distinct job: <em>T</em>(<em>t</em>) says that the ray survived to the point, <em>σ</em> says how much the point contributes, and <em>c</em> supplies its color. The hat on <em>C</em> marks this as the model's rendered prediction, rather than an observed pixel.
 
+## A Useful Analogy: Tomographic Reconstruction
+
+The inverse problem has the same broad shape as <span class="focus-label">transmission CT</span>. In both cases, measurements are made along many known rays and are used to infer a continuous field inside a volume. The analogy is useful as long as the forward models are kept distinct.
+
+In idealized X-ray CT, let μ(<em>x</em>) be the attenuation coefficient at position <em>x</em>. A ray measurement obeys the Beer-Lambert model
+
+\[
+I(\mathbf r)=I_0\exp\!\left(
+-\int_{t_n}^{t_f}\mu(\mathbf r(t))\,dt
+\right),
+\]
+
+where <em>I</em><sub>0</sub> is incident intensity and <em>I</em>(<em>r</em>) is the detected intensity. Taking the negative log converts the measurement to a line integral:
+
+\[
+p(\mathbf r)=
+-\log\!\left(\frac{I(\mathbf r)}{I_0}\right)=
+\int_{t_n}^{t_f}\mu(\mathbf r(t))\,dt.
+\]
+
+The collection of such projections is the Radon-transform setting underlying classical tomographic reconstruction [2]. NeRF also queries an unknown field along rays, but its measurement is a color formed by emission and absorption, not a log-linear attenuation projection.
+
+| Aspect | Transmission CT | NeRF |
+| --- | --- | --- |
+| Unknown field | Attenuation μ(<em>x</em>) | Density σ(<em>x</em>) and directional color <em>c</em>(<em>x</em>, <em>d</em>) |
+| Measurement on a ray | One transmitted intensity, usually log-transformed into a line integral | One RGB value produced by alpha compositing along the ray |
+| Forward model | ∫ μ(<em>r</em>(<em>t</em>)) d<em>t</em> | ∫ <em>T</em>(<em>t</em>)σ(<em>r</em>(<em>t</em>))<em>c</em>(<em>r</em>(<em>t</em>), <em>d</em>) d<em>t</em> |
+| Reconstruction | Analytic inversion is available under ideal sampling assumptions; iterative methods address nonideal data | A per-scene MLP is optimized through the nonlinear rendering equation |
+| Interpretation | μ has a physical attenuation meaning | σ is primarily an appearance-supported density; it is not automatically a quantitative material property |
+
+The important shared intuition is <span class="focus-label">many rays constrain one common volume</span>. A point cannot independently explain every observation: its value must agree with the rays passing through it from different views. The important difference is occlusion and direction-dependent appearance. NeRF's transmittance makes nearer density suppress farther color, and its color field changes with viewing direction. Therefore it does not admit the simple filtered-backprojection route associated with ideal CT; it is learned by differentiating the rendering model against observed pixels.
+
 ## From the Integral to a Computable Pixel
 
 The integral cannot be evaluated exactly because the field is a neural network. NeRF samples <em>N</em> ordered distances
 
 \[
-t_n\le t_1<t_2<\cdots<t_N\le t_f,
-\qquad
-\delta_i=t_{i+1}-t_i,
+t_n < t_1 < t_2 < \cdots < t_N < t_f.
 \]
 
-and queries the field at <em>x</em><sub>i</sub> = <em>r</em>(<em>t</em><sub>i</sub>). Let σ<sub>i</sub> and <em>c</em><sub>i</sub> be the predicted density and color there. The probability of stopping within the small interval following sample <em>i</em> is approximated by
+The distance between adjacent samples is
+
+\[
+\delta_i=t_{i+1}-t_i.
+\]
+
+The field is queried at <em>x</em><sub>i</sub> = <em>r</em>(<em>t</em><sub>i</sub>). Let σ<sub>i</sub> and <em>c</em><sub>i</sub> be the predicted density and color there. The probability of stopping within the small interval following sample <em>i</em> is approximated by
 
 \[
 \alpha_i=1-\exp(-\sigma_i\delta_i).
@@ -195,3 +231,4 @@ Part I asked what it means to represent an image, shape, or scene as a function.
 ## References
 
 1. B. Mildenhall, P. P. Srinivasan, M. Tancik, J. T. Barron, R. Ramamoorthi, and R. Ng. [*NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis*](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123460392.pdf). ECCV, 2020.
+2. A. C. Kak and M. Slaney. [*Principles of Computerized Tomographic Imaging*](https://slaney.org/pct/pct-toc.html). IEEE Press, 1988; SIAM, 2001.

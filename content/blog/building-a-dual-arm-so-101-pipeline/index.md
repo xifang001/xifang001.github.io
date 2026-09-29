@@ -334,7 +334,7 @@ For replay and spot checking, I used:
   --dataset.episode=0</code></pre>
 </details>
 
-I then repeated the same collection and inspection workflow with a second task: covering a cylinder with a blue cap. Compared with the carrot-to-box task, this setup requires more precise alignment between the cap and the cylinder before placement. The example below shows the recorded camera and joint traces alongside a replay of one collected episode.
+I then repeated the same collection and inspection workflow with a second task: covering a cylinder with a blue cap. The resulting [`Franc1sF/blue-cap-cylinder-50` dataset](https://huggingface.co/datasets/Franc1sF/blue-cap-cylinder-50) contains these demonstrations. Compared with the carrot-to-box task, this setup requires more precise alignment between the cap and the cylinder before placement. The example below shows the recorded camera and joint traces alongside a replay of one collected episode.
 
 <figure class="article-figure-wide">
   <img src="cover-task-data-collection.jpg" alt="Rerun data-collection view for the cylinder-covering task, showing camera streams together with observation and action traces.">
