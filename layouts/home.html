@@ -62,6 +62,22 @@
                 </div>
               </article>
             {{ end }}
+            {{ with .Site.GetPage "/blog/building-a-dual-arm-so-101-post-training" }}
+              {{ $post := . }}
+              <article class="selected-blog-card">
+                {{ with .Resources.GetMatch "so101-post-training-preview.jpg" }}
+                  <a class="selected-blog-image" href="{{ $post.RelPermalink }}">
+                    <img src="{{ .RelPermalink }}" alt="SO-101 robot, carrot, and target container during a closed-loop rollout.">
+                  </a>
+                {{ end }}
+                <div class="selected-blog-copy">
+                  <p class="selected-blog-meta">{{ .Params.content_type }} · {{ .Params.part_label }} · Robotics</p>
+                  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                  <p class="selected-blog-summary">{{ .Params.part_summary }}</p>
+                  <a class="inline-link-row" href="{{ .RelPermalink }}">Read article</a>
+                </div>
+              </article>
+            {{ end }}
             {{ with .Site.GetPage "/blog/vla-post-training-lora-family" }}
               {{ $post := . }}
               <article class="selected-blog-card">
