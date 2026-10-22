@@ -4,11 +4,11 @@ date: 2026-09-20
 lastmod: 2026-09-20
 slug: "vla-post-training-lora-family"
 summary: "Part I: a controlled comparison of LoRA, QLoRA, and DoRA for post-training GR00T N1.7 on LIBERO-10 Long."
-description: "A technical study note on parameter-efficient post-training of GR00T N1.7, embodiment-conditioned adapters, and closed-loop LIBERO evaluation."
+description: "An experimental note on parameter-efficient post-training of GR00T N1.7, embodiment-conditioned adapters, and closed-loop LIBERO evaluation."
 tags: [Robotics, Vision-Language-Action, VLA, GR00T, Post-Training, LoRA, LIBERO]
 categories: [Robotics]
 series: [VLA Post-Training]
-content_type: "Study Note"
+content_type: "Experiment Note"
 authors: [Xi Fang]
 toc: false
 draft: false
@@ -207,7 +207,7 @@ All methods used the same base and task recipe. The variables below define the s
 | Effective batch size | 640: global batch 320 with two accumulation steps |
 | Adapter | rank 16; alpha 32; dropout 0.05; full adaptation scope |
 | Precision | bf16; QLoRA uses an NF4 4-bit frozen base with bf16 compute |
-| Hardware | Four NVIDIA RTX GPUs with 49G |
+| Hardware | NVIDIA RTX GPUs |
 
 Evaluation ran in a dedicated LIBERO client virtual environment through `rollout_policy.py`. To make stochastic action generation reproducible, every policy-action call received a deterministic seed derived from `blake2b(seed:env_idx:episode_idx:call_idx)`, where `seed` is the evaluation seed, `env_idx` identifies the parallel environment, `episode_idx` the rollout, and `call_idx` the action-query count within that rollout. The digest is converted to the integer seed used by the policy sampler.
 

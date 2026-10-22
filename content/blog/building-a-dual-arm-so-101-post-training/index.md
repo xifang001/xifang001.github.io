@@ -62,7 +62,8 @@ The run uses a rank-16 full-scope LoRA configuration. “Full scope” means the
 | Base model | GR00T N1.7-3B generic checkpoint |
 | Dataset | [`Franc1sF/record-test`](https://huggingface.co/datasets/Franc1sF/record-test): 102 episodes, one task, two cameras; 92 training / 10 held-out |
 | Optimization | 10,000 steps; cosine schedule; 5% warmup; learning rate 1e-4 |
-| Batch | Global batch 32: 8 per GPU across four GPUs |
+| Batch | Global batch 32 |
+| Hardware | NVIDIA RTX GPUs |
 | Adapter | Rank 16; alpha 32; dropout 0.05; full scope |
 | Data loading | Two workers |
 
@@ -111,7 +112,7 @@ The held-out examples provide a qualitative check that predicted joint trajector
 
 ## Deploying the Adapter on the Robot
 
-Training ran on a remote deep-learning server, while real-robot inference ran on a separate local workstation connected to the SO-101 and its two cameras. This boundary exposed a distinction that is easy to miss during training: a resumable Trainer checkpoint is not the same thing as a deployable policy package.
+Training ran remotely on NVIDIA RTX GPUs, while real-robot inference ran on a separate local workstation connected to the SO-101 and its two cameras. This boundary exposed a distinction that is easy to miss during training: a resumable Trainer checkpoint is not the same thing as a deployable policy package.
 
 The full `checkpoint-N` directory is about 985 MB because it retains optimizer shards, scheduler state, and random-number-generator state needed to resume distributed training. The robot client needs only the policy adapter and its runtime metadata: `adapter_model.safetensors`, `adapter_config.json`, `processor_config.json`, `statistics.json`, and `embodiment_id.json`. This reduced package is approximately 50–65 MB; the 6.5 GB GR00T base model remains external and can be fetched on the target machine.
 
@@ -124,7 +125,7 @@ The portability-critical field is `base_model_name_or_path` in `adapter_config.j
 }</code></pre>
 </details>
 
-The target workstation used an RTX 5080. I therefore checked its CUDA capability before starting the server, rather than assuming that a training environment would transfer unchanged:
+The target workstation used an NVIDIA RTX GPU. I therefore checked its CUDA capability before starting the server, rather than assuming that a training environment would transfer unchanged:
 
 <details class="article-command">
   <summary>Show the target-GPU compatibility check</summary>
