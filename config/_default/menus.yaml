@@ -23,6 +23,3 @@ main:
     url: "/awards/"
     weight: 6
 
-  - name: "Resume"
-    url: "/uploads/resume.pdf"
-    weight: 7

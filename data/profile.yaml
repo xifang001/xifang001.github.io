@@ -1,16 +1,15 @@
 name: "Xi Fang"
-headline: "Building vision and multimodal AI systems for robotics and healthcare."
-subheadline: "Machine Learning and Research Engineer with a Ph.D. in Biomedical Engineering, focused on turning strong research into production-ready systems."
+headline: "Building vision and multimodal AI systems for real-world applications."
+subheadline: "Machine Learning and Research Engineer with a Ph.D. in Biomedical Engineering."
 location: "Bay Area, CA"
 email: "xifang96@gmail.com"
 phone: "(518) 960-2197"
 website: "https://xifang001.github.io/"
-cv_url: "/uploads/resume.pdf"
 
 hero:
   intro:
-    - "I work across medical imaging, computer vision, multimodal learning, and embodied AI."
-    - "Recent work spans production ML for medical robotics, 3D perception and simulation, and deployment pipelines that connect research models to real-world decision support."
+    - "I work across computer vision, multimodal learning, and embodied AI."
+    - "Recent work spans 3D perception, simulation, and deployment-oriented machine learning."
   metrics:
     - label: "Published papers"
       value: "20+"
@@ -21,21 +20,21 @@ hero:
 
 summary:
   title: "Profile"
-  text: "Machine Learning and Research Engineer with a Ph.D. in Biomedical Engineering and industry experience building production computer vision and multimodal ML systems for medical robotics. I enjoy translating strong research ideas into deployable systems, especially in settings that require geometric reasoning, multimodal sensing, or human-in-the-loop workflows."
+  text: "Machine Learning and Research Engineer with a Ph.D. in Biomedical Engineering. I enjoy translating strong research ideas into deployable systems, especially in settings that require geometric reasoning, multimodal sensing, or human-in-the-loop workflows."
 
 current:
   title: "Currently"
   items:
-    - "Machine Learning Engineer at Noah Medical, working on perception, registration, segmentation, and AI systems for medical robotics."
-    - "Interested in multimodal learning, embodied AI, computer vision, 3D perception, and clinically grounded deployment."
+    - "Machine Learning Engineer focused on computer vision, multimodal learning, and robotics."
+    - "Interested in multimodal learning, embodied AI, computer vision, 3D perception, and deployment."
     - "Writing and organizing work across projects, publications, and technical notes."
 
 focus_areas:
   title: "What I Work On"
   items:
     - "Robotics and embodied AI, including VLA post-training, sim-to-real adaptation, and multimodal control."
-    - "Medical imaging and computer vision, including segmentation, registration, 3D reconstruction, and structured representation learning."
-    - "Surgical simulation and planning, especially methods that connect biomechanics, generative modeling, and clinical usability."
+    - "Computer vision, including segmentation, 3D reconstruction, and structured representation learning."
+    - "Simulation and planning methods that connect geometric modeling, generative learning, and usability."
 
 skills:
   title: "Core Strengths"
